@@ -1,9 +1,7 @@
 # 1. Temel Kavramlar
 
 - Veri olguların, kavramların, veya talimatların, insan tarafından veya otomatik yolla iletişim, yorumlama ve işleme amacına uygun bir biçimde ifadesidir.
-- Genellikle, biz veri veya veri birimleri üzerindeki işlemlerimizi varlık hakkında her hangi bilgi almak için gerçekleştiririz.
-Veri kaydedilebilir bilinen gerçeklerdir.
-Örneğin bir kişinin ismi, adresi, telefon numarası gibi.
+- Genellikle, biz veri veya veri birimleri üzerindeki işlemlerimizi varlık hakkında her hangi bilgi almak için gerçekleştiririz. Veri kaydedilebilir bilinen gerçeklerdir. Örneğin bir kişinin ismi, adresi, telefon numarası gibi.
 
 ## 1.1 Klasik Dosya Yapıları
 - Veri saklama birimlerinde depolana veri topluluklarına "dosya" adı verilmektedir.
@@ -21,19 +19,24 @@ yer işgal edecek. Yani hard disk tekrarlı veriler için kullanılmış olacakt
 - **Sadece belirli bir dilin kullanılması:** Verilerin dosya sisteminde saklandığı ortamlar için değişik programlama dillerinden bir tanesi kullanılır. Kullanılan bu programlama dili ise SQL dili gibi esnek değildir.
 
 ---
+## 1.3 Veri Tabanı Nedir
+- Birden çok uygulama tarafından kullanılan 
+- Gereksiz yinelemelerden arınmış.
+- Düzenli bir şekilde saklanan
+- Birbiriyle ilşkili (uyumlu olarak) 
+- Sürekli , fakat statik olmayan 
+- Belirli bir amaç için bir araya getirilmiş
+- VERİ TOPLULUĞU (küçük bir dünya)’dur.
+
+Örnek: şirket, bakanlık, üniversite, market stok takip....
 
 # 2. Veri tabanı Yönetim Sistemleri
 
 ![vtys](../img/vtys-1.png)
 
-Veri tabanı tanımlamak, yaratmak,
-yaşatmak ve veri tabanına denetimli
-erişim sağlamak için kullanılan
-yazılım sistemidir.
+Veri tabanı tanımlamak, yaratmak, yaşatmak ve veri tabanına denetimli erişim sağlamak için kullanılan yazılım sistemidir.
 
-Veri Tabanı Yönetim Sistemleri,fiziksel hafızada bilgileri çeşitli özelliklerine göre gruplandırıp şekillendirdikten sonra saklayan programlardır.VTYS, saklanan bu veriyi, Yapısal Sorgulama komutları ile insanların istekleri çerçevesinde işler,yeniden şekillendirirler. Yani, 
-Veritabanı Yönetim Sistemi’nin bir ucunda, bilgisayar diskinde 
-saklanan düzenlenmiş veriler, diğer ucunda ise bir kullanıcı (genellikle insan) veya istemci vardır.Aynı veri tekrar tekrar tutulmaz.
+Veri Tabanı Yönetim Sistemleri,fiziksel hafızada bilgileri çeşitli özelliklerine göre gruplandırıp şekillendirdikten sonra saklayan programlardır.VTYS, saklanan bu veriyi, Yapısal Sorgulama komutları ile insanların istekleri çerçevesinde işler,yeniden şekillendirirler. Yani, Veritabanı Yönetim Sistemi’nin bir ucunda, bilgisayar diskinde saklanan düzenlenmiş veriler, diğer ucunda ise bir kullanıcı (genellikle insan) veya istemci vardır.Aynı veri tekrar tekrar tutulmaz.
 
 Vtys'ler ilişkili olan veriler **(Collection of interrlated data)** ve veriye ulaşmak için gerekli olan yazılımlar kümesini bünyelerinde barındırırlar.
 
@@ -123,14 +126,14 @@ A kümesi içindeki bir varlık B kümesi içindeki birden fazla varlıkile ili�
 - Varoluş Koşulu: Eğer bir x varlığının bulunması y varlığının bulunmasına bağlı ise x'in y'ye bağlı olduğundan söz edilebilir.y silinirse x'in bir anlamı kalmayacaktır.Bu durumda y bakın varlık **(dominant entity)**, x ise bağımlı varlık **(subordinate entity)** adı verilir.
     - örneğin bir müşterinin hesabı silineceğinde,bu müşterinin hesap hareketlerinin de silinmesi gerekmektedir.Hesap hareketleri hesap varolmadan var olamaz.
 ***
-## 4. Anahtar
+## 3.6 Anahtar
 - Varlık kümesi içinde, varlıkları birbirinden ayırt etmek için kullanılan bu tür niteliklere varlık kümesinin anahtarı adı verilir. İki tür anahtar vardır.<br>
 - **Süper anahtar (superkey):** Varlık kümesinde yer alan bir varlığı kesin olarak tanımlamaya yarayan anahtara süper anahtar adı verilmketedir. Bu anahtar sadece bir nitelikten oluşabileceği gibi, birden fazla niteliğin birleşiminden de oluşabilir. Süper anahtarlar süper küme oluşturur. Bir süper anahtarın herhangi bir süper kümesi daima bir süper anahtar olarak kabul edilir.
     - Örneğin SSK no süper anahtardır. Fakat isim alanı süper anahtar olamaz. SSk no ve isim alanı birlikte süper anahtar olarak kabul edilebilir.<br>
 - **Aday anahtar (candidate key):** Varlık kümesinde bir varlığı tanımlamaya yarayan bir başka anahtar türü aday anahtar dır. Bir varlık kümesinin süper anahtarı bir veya daha fazla niteliğin birleşiminden oluşabilmektedir. Aday anahtar ise, süper anahtar özelliklerine sahip tek nitelikli anahtardır.<br>
 - Eger bir üniversitede tüm ögrencilerin numaraları birbirinden farklı ise ögrencileri belirlemek için ögrenci numarası yeterlidir. Bu durumda ögrenci numarası ögrenci varlık kümesi için aday anahtardır. İçinde ögrenci numarası bulunan her nitelik grubu ise(ögrenci numarası, adı, soyadı gibi) ise bu varlık kümesinin süper anahtarıdır.
 
-# 5. Varlık-İlişki Şemaları (Entity-Relationship Model)
+# 4. Varlık-İlişki Şemaları (Entity-Relationship Model)
 
 Varlık-ilişki modeli ; Veritabanı modelleri içerisinde,varlık ve bu varlıkların birbirleri arasındaki ilişkilere dayanarak herhangi bir ön-veri olmaksızın model oluşturmakta kullanılan modeldir. Buradaki varlık; benzersiz bir şekilde tanımlanabilen
 ve bağımsız var olabilme yetisine sahip nesne ya da oluşum olarak tanımlanabilir. Varlıklar , ev, araba gibi fiziksel nesneler olabileceği gibi müşteri ödemesi veya sipariş gibi soyut nesneleri de içerirler.
@@ -145,3 +148,142 @@ Varlıkların aralarında kurulabilecek ilişki türleri aşağıdaki gibi tanı
 ![varlik-iliski-sema3](../img/varlik-iliski-sema3.png)
 
 ---
+
+# 5. Veri Tabanı Planlama
+Veritabanı tasarlamada ilk adım, tasarımın amacını ve ne için kullanılması gerektiğini belirlemektir. Veritabanından hangi  bilgiyi istediğinizi bilmeniz gerekir. Buradan, hangi konular  hakkında bilgi saklamaya gereksinim duyduğunuzu (tablolar)  ve her konu için hangi bilgileri saklamanız gerektiğini (tablodaki alanlar) belirleyebilirsiniz.
+
+## 5.1 Tablo Nedir
+Tablolar en temel Veri Tabanı nesneleridir.  Amaçları bilgi depolamaktır. Diğer bütün veri tabanı nesneleri bir yada daha çok tablonun etkileşimini sağlamak amacıyla kullanılır. Bir VT binlerce tablo içerebilir ve her bir tablonun alabileceği kayıt sayısı yalnızca sabit diskinizdeki boş alan ile sınırlıdır.
+
+## 5.2 Tabloların Tasarlanması
+Tablo yinelenen bilgileri içermemeli ve tablolar arasında bilgi yinelenmemelidir. Bu bakımdan, ilişkisel veritabanı içindeki tablo, elektronik tablo gibi düz dosya uygulamasındaki tablodan farklıdır.
+![veritabani-planlama-1](../img/veritabani-planlama-1.png)
+
+Her bilgi parçası, yalnızca bir tabloda saklanmalıdır. Bu koşulun uyulmadığı durumlarda, bir yerde güncellenen bir adres bilgisi başka yerde güncellenmeden kalabilir ve bu durum veri tutarsızlığına yol açar. Örneğin, her müşterinin adresini ve telefon numarasını bir defa ve bir tabloda saklamak en uygun tasarım biçimi olacaktır. 
+
+![veritabani-planlama-2](../img/veritabani-planlama-2.png)
+
+Her tablo bir konu hakkında bilgi içermelidir. Her tablo yalnızca bir konu hakkındaki gerçeği içerdiğinde, diğer konulardan bağımsız olarak her konu hakkındaki bilgiyi koruyabilirsiniz.
+
+Örneğin, müşteri adreslerini, müşteri siparişlerinden farklı bir tabloda saklayabilirsiniz, böylece bir siparişi sildiğinizde, müşteri hakkındaki bilgiyi korursunuz.
+
+![veritabani-planlama-3](../img/veritabani-planlama-3.png)
+
+Microsoft Office programının Excel bileşeni gibi basit bir  Elektronik Tablolama programı, verileri genelde düz bir  dosya olarak başvurulan yalnızca tek bir tabloda depola- yabilir. Bu basit Veri Tabanları “Düz Veri Tabanı” olarak  adlandırılır.
+
+Günümüzde hemen tüm VTYS’ler ilişkisel veri modelini  kullanırlar. Bu model verileri birden çok ilişkili tablolarda  tutabilir ve böylece “İlişkisel Veri Tabanı” olarak adlandı- rılan veri Tabanlarını oluştururlar.
+
+![veritabani-planlama-4](../img/veritabani-planlama-4.png)
+
+İlişkisel modelde veriler basit tablolar halinde tutulmalıdır.İlişkisel Veri Tabanlarındaki herhangi bir tabloda, birbiriyle tamamen aynı iki kayıt (row or record) bulunamaz.
+
+Dolayısıyla; bir müşterinin aynı ürünü iki kez sipariş etmesi görünürde engellenmiştir. Bu durumu da tabloya bir alan ekleyerek çözebilirsiniz. Örneğin Sipariş Numarası
+
+Bir Veri Tabanında bulunan farklı Tablolardaki İlişkisel Alanların Veri Tipleri ve Tanımlamaları aynı olmalıdır.
+
+Key: Birbiriyle eş kayıtları ayırmak için kullanılan bileşenlere denir.
+
+Tablodaki bir kaydı diğer tüm kayıtlardan ayırmak için kullandığımız bileşene, “Primary Key” adı verilir. Primary Key, o kaydı “unique” (eşsiz, benzersiz) yapar. Tüm İlişkisel  Veri Tabanlarında her bir Tablo ya da İlişkide mutlaka Primary Key olmalıdır.
+
+![veritabani-planlama-4](../img/veritabani-planlama-5.png)
+
+## .3 Veri Tabanı Tasarım Adımları
+1. Veri Tabanının amacını belirleme,
+2. Veritabanınızda gereksinim duyduğunuz tabloları belirleme,
+3. Tablolarınızda gereksinim duyduğunuz alanları belirleme,
+4. Anahtar alanları belirleme (her kayıttaki benzersiz değerleri tanımlama)
+5. Oluşturulan Tablolar arasındaki ilişkileri belirleme,
+6. Tasarımı geliştirme,
+7. Veri girme ve diğer veritabanı nesnelerini oluşturma
+
+# 6. Veri Tabanı Yönetim Sistemleri
+Veri tabanı sistemi ile ilgili her türlü işletimsel gereksinimleri karşılamak için kullanılan sistem seviyesinde, karmaşık, merkezi yazılım sistemine VTYS denir. VTYS genel olarak şu olanakları sağlar:
+
+- VT tanımlanması, gerçeklenmesi (oluşturulması), kullanımı paylaşımı
+- Kontrollü veri tekrarı
+- Sorgu işemede verimli erişim metodlarını kullanır.
+- Çoklu kullanıcılı hizmet, veri kurtarma ve yedeklme imkanı sağlar.
+- Farklı kullanıcı arayüzlerine imkan sağlar.
+- Üst seviyeli karmaşık iş kısıtlamlarının tanımlanması, gerçeklenmesi ve sağlanmasına olanak sağlar.
+- Güvenlik tanımlamaları ve sağlanmasını kontrol eder.
+- VT sistemine, gerek işletim sistemi gerek diğer kullanıcılar (uygulama programları gibi...) doğrudan erişemez; ancak VTYS üzerinden erişebilir.
+
+![vtys](../img/vtys-yapisi.png)
+
+- Veri sözlüğü, veri tabanı tanımlarının (metada) saklandığı dosyalardır.
+- İndex dosyları, fiziksel erişim dosyalarıdır.
+- Log dosyaları güvenlik amaçlı dosyalardır.
+
+
+# 7. Veri Modelleri Kategorileri(Categories of Data Models)
+- Kavramsal (üst düzey, anlamsal) veri modelleri **(Conceptual (high-level, semantic) data models)**: Varlık tabanlı veya nesne tabanlı veri olarak da adlandırılır.
+- Uygulama (temsili) veri modelleri **(Implementation (representational) data models:)**: birçok ticari DBMS uygulaması tarafından kullanılır (örn.birçok ticari alanda kullanılan ilişkisel veri modelleri).
+- Fiziksel (düşük seviyeli, dahili) veri modelleri **(Physical (low-level, internal) data models)**: Verilerin nasıl işlendiğine ilişkin ayrıntıları açıklayan kavramlardır. bilgisayarda saklanır.
+
+## 8.1 Şemalar ve Örnekler
+- **Database Schema** (Veritabanı şeması):
+Bir veritabanının açıklaması. Veritabanı yapısının açıklamalarını, veri türlerini,
+ve veritabanındaki kısıtlamalar.
+- **Schema Diagram** (Şema diyagramı):
+Bir veritabanının (çoğu yönünün) açıklayıcı bir görüntüsü şema.
+- **Schema Construct** (Şema Yapısı):
+Şemanın bir bileşeni veya içindeki bir nesne şema, ör. ÖĞRENCİ, DERS.
+- **Database State** (Veritabanı durumu):
+Belirli bir veritabanında saklanan gerçek zamanlı verilerdir ve bu verilerin toplanmasını içerir.Bu terim bireysel veritabanı bileşenlerine de uygulanır, Örneğin. kayıt örneği, tablo örneği, varlık örneği
+
+![ornek-db-schema](../img/ornek-database-schema.png)
+
+# 8. Veritabanı Kullanıcıları
+- Yönetici (Admin)
+    - VT erişimi ve kullanımı kontrol eder
+    - Sistem için gerekli s/w,h/w desteğini belirler
+    - Güvenlik açığını, verimsiz kaynak kullanımını belirler
+- Tasarımcı (Designer)
+    - Verinin her aşamada modellenmesi ile ilgilenir.
+    - Gerçekleme öncesi aşamalardan sorumludur. VT
+    - Kullanıcıları ile haberleşir gereksinim analizi yapar.
+    - Genel olarak bütün kullanıcılar ile yakın temas vardır.
+- Son kullanıcılar (End user)
+- VT sistem yazılımcısı
+
+# 9. DBMS Dilleri
+## 9.1 Veri Tanımlama Dili - Data Definition Language(DDL)
+- Veritabanı kavramsal şeması belirtmek için veritabanı tasarımcısı tarafından kullanılır.
+- Aynı zamanda bir çok database yönetim sisteminde kullanılır.
+## 9.2 Veri Manipülasyon Dili - Data Manipulation Language(DML)
+- (High-Level or Non-procedural Languages) :örneğin sql yüksek seviyeli ve prosedürel olmayan bir dildir.
+    - Bir programala dili bağımsız bir şekilde kullanılabilir veya dbms içerisinde kullanılıyor olabilir.
+- (Low Level or Procedural Languages): düşük seviyeli diller yada procedural diller;
+    - Bir programlama dili içerisinde barındırılıyor olmalıdır.
+
+## 9.3 Dbms programalama arayüzleri
+- DML içerisinde gömülü diller;
+    - Embedded Approach:sql(c,c++),sqlj(java için)
+    - Proceedure Call Approach:odbc,jdbc(java için)
+    - Database Programing Language Approach:oracle için pl/sql,microsoft için t/sql
+
+# 10. Veritabanı Sistem Araçları
+- belirli işlevleri gerçekleştirmek için:
+    - Dosyalarda depolanan verileri bir veritabanına yükleme. Veri dönüştürme araçlarını içerir.
+    -  Veritabanını periyodik olarak diske yedekleme.
+    - Veritabanı dosya yapılarının yeniden düzenlenmesi.
+    - Rapor oluşturma yardımcı programları.
+    - Performans izleme araçları.
+    - Sıralama, kullanıcı izleme, veri sıkıştırma vb. gibi diğer işlevler.
+- Veri sözlüğü / havuzu:Şema açıklamalarını ve tasarım gibi diğer bilgileri depolamak için kullanılır.kararlar, uygulama program açıklamaları, kullanıcı bilgileri, kullanım standartlar vb.
+- Uygulama Geliştirme Ortamları araçları:
+    - PowerBuilder (Sybase),
+    - JBuilder (Borland),
+    - JDeveloper 10G (Oracle)
+
+# 11. DBMS Avantajları
+- Üstveri(metadata):Veri tabanında saklanan verinin tanımları (meta data) ve diğer kısıtlamalar da saklanıyor. Farklı küçük dünyalar aynı veri tabanında saklanabiliyor. (Buna Program-veri bağımsızlığı denir.)Dosya işleme uygulaması sadece o uygulama için yazılmış.
+- Kayıt saklama ve erişimde:
+    - “güçlü” veri yapıları ihtiyacı
+    - Tampon kullanımı
+- Program-operasyon bağımsızlığı ihtiyacı:
+    - Verinin farklı görünümü (multiple views)
+    - Paylaşım (sharing) ve çoklu hareket işleme (transaction processing) imkanı
+- Eşzamanlılık
+- Veri kurtarma ve geri sarma
+- Güvenlik ve yetkilendirme
