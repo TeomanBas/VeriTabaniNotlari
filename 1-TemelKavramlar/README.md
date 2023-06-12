@@ -448,3 +448,39 @@ Belirli bir veritabanında saklanan gerçek zamanlı verilerdir ve bu verilerin 
     - Çok yüksek maliyetli.
 ---
 
+# 14. INDEX YAPILARI
+Veritabanının performansını artırmak için kullanılan indeksler vardır. Indeksler hangi kayıtların hangi tablolarda bulunduğunu gösteren kitapların başındakine benzer bir mantığı olan araçlardır.
+# 15. SAKLI YORDAMLAR
+Saklı yordamlar derlenmiş sql cümlecikleridir. Birer veritabanı nesnesi oldukları için, doğrudan veritabanı yöneticisi olan programda yer alırlar. Örneğin bir tablodaki verilerin yedeğini alan ya da 1 yıldan fazla zaman geçen verilerin yedeğini kaldıran saklı yordamlar oluşturulabilir. Saklı yordamlar bir tabloya bağlı olmaksızın veritabanı içinde tanımlanan belirli bir işi yapmaya yönelik kodlardır.  Bu kodlar yazıldığı zaman aynı zamanda derlendikleri için optimize edilmiştir ve en hızlı şekilde çalışmaya hazır kodlardır.
+# 16. TRIGGER
+Bir tablo üzerinde belirli bir olaya bağlı olarak tetiklenip çalışan SQL kodlarına tetikleyici (trigger) denir. Tablo üzerindeki triggerları tetikleyen olaylar insert, update, delete olaylarıdır.Örneğin stok hareketleri sonucunda stok miktarlarının azalması veya artması işlemlerinin yapılması tipik bir trigger kullanım yeridir.Hem tetikleyici hem de saklı yordamlar veritabanı üzerindeki kodlar olmaları sebebi ile veritabanını sunan sunucu üzerinde çalışırlar. İstemci&Sunucu mimarinin güçlü bileşenlerindendir. İstemci&Sunucu mimarideki SQL veritabanları tarafından desteklenmektedir. Oracle, Sybase, MS SQL, Interbase, FireBird vb.
+
+Verilerin bulunduğu sunucu üzerinde çalışmalarından dolayı veriler istemci ile sunucu arasında gidip gelmezler ve de sunucudan istemci tarafına minimum veri çekilmiş olur. 
+
+Eğer 1 numaralı bolum herhangi bir personelde kullanıldıysa BOLUM tablosundan BOLUM_NO değeri 1 olan kaydın kesinlikle silinememesi gerekmektedir. 
+Bu tür kontrollerin yapılarak veri bütünlüğünün korunmasına veri tutarlılığı (referential integrity) denir.Veri tutarlılığını sağlamak amacı ile trigger kullanımı çok tercih edilir.
+# 15. Mysql Veri Türleri
+Veri tabanında tutulan kayıtların yapısı hakkında bilgi sahibi olmak için Alanların bazı özelliklerinin önceden tanımlanması gerekir. Örneğin personel sicil numarası mutlaka tam sayı, ad soyad harflerden oluşması gibi...
+- **Sayısal (Numeric)**:
+    - **TINYINT:** Çok küçük tam sayı değerler içindir
+    Signed tanımlı durumda iken alabileceği değerler  –128 ile 127 arasındadır. Unsigned tanımlı aralık 0 ile 255 arasındadır.
+    - **SMALLINT:** Küçük tam sayı değerler içindir Signed tanımlı durumda iken alabileceği değerler  –32768 ile 32767 arasındadır.     Unsigned tanımlı aralık 0 ile 65535 arasındadır.
+    - **MEDIUMINT:** Orta büyüklükteki tam sayı değerler içindir. Signed tanımlı durumda iken alabileceği değerler  –8388608 ile 8388607arasındadır.     Unsigned tanımlı aralık 0 ile 16777215 arasındadır.
+    - **INT(n):Tamsayı** Normal büyüklükteki tamsayı değerler için Signed tanımlı durumda iken alabileceği değerler  –2147483648 ile  2147483647 arasındadır.
+    Unsigned tanımlı aralık 0 ile 4294967295 arasındadır.
+    - **BIGINT:** Büyük tam sayı değerler içindir. Tam sayı -9223372036854775808’den 9223372036854775807’e
+    - **FLOAT:** Sayıları kesirleri ile birlikte tutar. Max. karakter genişliği parametre olarak alınır.(23 basamağa kadar)
+    - **DOUBLE:** Sayıları kesirleri ile birlikte tutar. Max. karakter genişliği parametre olarak alınır. (24’ten 53 basamağa kadar)
+    - **DECIMAL:**Sayıları kesirleri ile birlikte tutar.Tam kısmı maksimum 64 Kesirli kısmı maksimum 30 değerini alabilir.
+- **Tarih Saat (Date and Time)**
+    - **DATETIME:** Yıl+Ay+Gün+Saat+Dakika+Saniye biçimindeki zaman bilgisi YYYY-MM-DD HH:MM:SS
+    - **TIMESTAMP:** 1 Ocak 1970'den 18 Ocak 2038'e kadar olan ve Yıl+Ay+Gün+Saat+Dakika+Saniye biçimindeki zaman bilgisi.
+    YYYYMMDDHHMMSS
+    - **DATE:** 1000-01-01'den 9999-12-31'e kadar değişebilen tarih alanı. YYYY-MM-DD
+- **Metinsel (String):**
+    - **CHAR(n):** n sayısı kadar karakteri olan sabit uzunluklu veridir.
+    - **TEXT:** En fazla 65535 karakter alabilen metin alanı
+    - **MEDIUMTEXT:** En fazla 16777215 karakter alabilen metin alanı
+    - **VARCHAR(n):** n sayısını geçmemek şartıyla değişen boyutta karakter
+- **Uzamsal (Spatial):** 
+    - **BOOL:** 0 veya 1 değerini alan veri türüdür.
