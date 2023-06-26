@@ -184,7 +184,7 @@ Mevcutluğu diğer varlık türüne bağlı olan varlık türüdür. Eğer bir v
 
 Varlık-ilişki modeli ; Veritabanı modelleri içerisinde,varlık ve bu varlıkların birbirleri arasındaki ilişkilere dayanarak herhangi bir ön-veri olmaksızın model oluşturmakta kullanılan modeldir. Buradaki varlık; benzersiz bir şekilde tanımlanabilen ve bağımsız var olabilme yetisine sahip nesne ya da oluşum olarak tanımlanabilir. Varlıklar , ev, araba gibi fiziksel nesneler olabileceği gibi müşteri ödemesi veya sipariş gibi soyut nesneleri de içerirler.
 
-![varlik-iliski-sema](../img/varlik-iliski-sema.png)
+![varlik-iliski-sema](../img/varlik-iliski-sema-1.png)
 
 Varlıkların aralarında kurulabilecek ilişki türleri aşağıdaki gibi tanımlanır ve model olarak ifade edilir.
 ![varlik-iliski-sema1](../img/varlik-iliski-sema1.png)
@@ -484,3 +484,113 @@ Veri tabanında tutulan kayıtların yapısı hakkında bilgi sahibi olmak için
     - **VARCHAR(n):** n sayısını geçmemek şartıyla değişen boyutta karakter
 - **Uzamsal (Spatial):** 
     - **BOOL:** 0 veya 1 değerini alan veri türüdür.
+
+Yukarıda tanımlanan veri türleri genelde tüm veri tabanlarında vardır.
+
+- **MS Access Veri tipleri:**
+
+|veri türü|açıklama|
+|--|--|
+|Text|Alfabetik yada alfasayısal verileri tanımlar. En fazla 255 karakterlik veriler içerebilir. Bu veriler üzerinde matematiksel işlemler yapılamaz.|
+|Memo (büyük metin)|Tablo içindeki uzun açıklamalar veya notların tutulması için kullanılır.Bu alanlara 32000 karakter uzunluğundaki metinler kaydedilebilir.|
+|number (sayı)|Sayısal alanların tanımlanması amacıyla kullanılır. Bu tür verileri içeren alanlar üzerinde matematiksel işlemler yapılabilir.|
+|date/time|Tarih veya saat bilgilerini içeren alanların tanımlanması amacıyla kullanılır.Bu alanlar baytlık yer işgal ederler.|
+|currency|Özellikle büyük rakamsal değerlerin kullanıldığı alanlardır.|
+|autonumber(otomatik sayı)|Bu veri türüne sahip alanlar, tabloya yeni bir kayıt eklendiğinde Access tarafından otomatik olarak üretilen sıralı yada raslantısal bir sayısal değer içerirler. Dolayısıyla bu alanda belirtilen sayısal değerler tektir ve ayrı kayıtlarda birbirinin aynısı olamaz. Bu tür alanlar kullanıcı tarafından güncelleştirilemez.|
+|yes/no|Bir baytlık bir uzunluğa sahip olan bu alanlar Yes/No biçimindeki verilerin saklanması amacıyla kullanılır.|
+|ole object| Veri tabanındaki alanlara resim,ses animasyon gibi nesneler eklenmesi gerektiğidurumlarda kullanılır.Ms Acces veritabanında bulunan bir veri türüdür.|
+|hyperlink|herhangi bir web sitesini bu alandaki veri olarak tanımlayabiliriz www'de bilgilerle direkt bağlantı sağlanabilir|
+|lookup|bir başka tablo ile bağlantı kurularak açılan listeden bilgiseçilmesini ve tanılanan alana taşınmasını sağlar|
+
+- **MYSQL İçin Veri Tipleri:**
+    - text - yazi
+    - char( ) : sabit 0 - 255 karakter.
+    - varchar( ) : değişken 0 - 255 karakter.
+    - tinytext : en fazla 255 karakter.
+    - text : en fazla 65.535 karakter.
+    - blob : en fazla 65.535 karakter.
+    - mediumtext : en fazla 16.777.215 karakter.
+    - mediumblob : en fazla 16.777.215 karakter.
+    - longtext : en fazla 4.294.967.295 karakter.
+    - longblob : en fazla 4.294.967.295 karakter.
+- sayilar
+    - tinyint( ) : -128 ,127 yada 0-255 unsigned.
+    - smallint( ) : -32.768 ,32.767 yada 0 – 65.535 unsigned.
+    - mediumint( ) : -8.388.608 , 8.388.607 yada 0 – 16.777.215 unsigned.
+    - int( ) : -2.147.483.648 , 2.147.483.647 yada 0 – 4.294.967.295 unsigned.
+    - bigint( ) : -9.223.372.036.854.775.808 , 9.223.372.036.854.775.807 yada 0 – 18.446.744.073.709.551.615 unsigned.
+    - float : küçük noktalı sayı.
+    - double( , ) : büyük noktalı sayı.
+    - decimal( , ) : double tipte string şeklinde saklanır.
+- tarİh , saat
+    - date : yyyy-mm-dd
+    - datetime : yyyy-mm-dd hh:mm:ss
+    - timestamp : yyyymmddhhmmss
+    - time : hh:mm:ss
+- diğer
+    - enum () : kullanıcı tanımlı liste tipi. ör; enum(‟e',‟h')
+    - set : küme tipi. enum benzeri. aynı anda birden fazla kayıt tutabilir.
+
+
+- **ORACLE VERi TiPLERi :**
+    - CHAR(karakterSayisi) : Maximum 255 karakterlik sabit uzunluktaki alfanümerik verilerin tutulabileceği alandır.
+    - DATE : tarih ve saat tutan alandır. Ülke kodu desteği vardır. Standart olan veri tipi DD-MON-YY (31-JUL-05)dir.
+    - MSLABEL : Trusted Oracle?da kullanılan iŞletim sistemine ait binary dosyadır.
+    - NUMBER (toplam,ondalık) : Sayısal verilerin tutulduğu alanlar için kullanılır. ilk hane toplam karakter sayısını(ondalık dahil), ondalık bölümü ise ondalık kısmın uzunluğunu
+    belirtir.
+    - NUMBER(hane) : Ondalık içermeyen tam sayılar için kullanılan veri tipidir.
+    - NUMBER : herhangi bir sayı girilmeden belirtilen sayısal alan tipidir. Tavsiye edilmemekle birlikte, oracle tarafından desteklenen maximum sayısal değere kadar veri girilebilir.
+    - VARCHAR2 (sayı): Maximum 4000 karakterli değiŞken uzunluktaki alfanümerik dataların
+    tutulabildiği alanlar için kullanılır.
+    - LONG : 2 GB? a kadar karakter bilgi tutabilen bir alan türüdür. Bir tabloda birden fazla long veri tipine sahip alan olamaz. Bu alan üzerinde indeks oluŞturulamaz. (*WHERE *GROUP BY * ORDER BY * DISTINC * CREATE CLUSTER *CREATE TABLE AS SELECT *SUBSTR, INSTR gibi SQL cümlelerinde kullanılamaz.)
+    - LONG RAW : 2 GB? a kadar binary bilgi tutabilen alanlar için kullanılır.
+    - RAW (sayı) : Maksimum 255 byte?a kadar bilgi tutabilen binary alanlar için kullnılır.
+    - ROWID : Oracle ́ın, tablodaki her bir satır için oluŞturduğu sıra numarasıdır. Oracle tarafından otomatik oluŞturulur.
+
+- **Exact Numeric Data Tipleri**
+Bu veri tipleriyle tam sayılar veya ondalık sayılar tutlabilirler. Bu veri tipleriyle matematik işlemleride yapılabilir. Kapladıkları alana göre ve kapasitelerine gore 6 ya ayrılırlar:
+    - Bigint
+    - Int
+    - Smallint
+    - Tinyint
+    - Decimal
+- Aproximate Numeric Data Tipleri
+Bu veri tiplerinde (zaten 2 tane var) amaç decimal in tutamadığı büyüklükteki değerleri
+tutmaktır.
+    - Float(n)
+    - Real
+- Monetary Data Tipleri
+para yerine kullanacağımız değişkenlerdir Money= -922 337 203 685 47,.5808 'den 922 337 203 685 477,5807 'ye kadar paraları tutabilir. 8 bayt yer kaplar. Smallmoney= 214 748,3648 'den 214 748,3647 'kadar olan sayıları tutabilir. 4 bayt yer kaplar.
+
+- Date and Time Data tipleri
+Tarih ve zamanı tutmak için kullanılan veri tipleri 
+    - Datetime= 1 Ocak 1753 'ten 31 Aralık 9999 'a kadar olan tarih aralığıı tutabilir. 8 bayt yer kaplar.
+    - Smalldatetime= 1 Ocak 1900 'den 6 Haziran 2079 'a kadar olan tarih aralığını tutar. 4 bayt yer kaplar.
+- Character Data Tipleri
+Karakter data tipleri en çok kullanılan data tipleridir. Kelimelerin yerine daha doğrusu
+harflerin yerine kullanılır. Parametre alırlar. Aldıkları parametreler içerdikleri karakter sayısıdır. İsimlerinde genelde "char " kelimesi vardır. Bunun başına "n" veya " var" önekleri getirilerek diğer data tipleri oluşturulmuştur. Önce "n" varsa veri tipinin başında bu unicode karakterleride içeriyor demektir. Yani her dilde görüntülenebilir. Başında " n " olanlar olmayanlarına göre 2 kat daha fazla yer tutarlar Başında "var" olanlar ise içine aldıkları parametreye kadar genişletilebilirler. Örneğin **varchar(5)** direk olarak 5 baytlık yer ayırmaz, içine 3 harf yazarsak 3 bayt, 2 harf yazarsak 2 bayt yer ayırır. Bu neden boyle diyecek olursanız veri tipi varchar(5) değilde **char(5)** olsaydı ben içine tek bi karakter bile yazsam direk 5 baytlık alanı işgal edecekti. 
+her seferinde  varchar kullanmak sorgularda performans kaybetmenize sebep olabilir.
+
+    - **Char(n) =** Enfazla 8000 karakter alabilir. Dolayısıyla maksimum 8000 bayt yer kaplar. Bu veri tipi içine girilecek olan karakter sayısı kesin belli olduğu zaman kullanılır.
+    - **Nchar(n) =** Enfazla 4000 karakter alır. 2 ile 8000 bayt arası yer tutar. (unicode karakterleri yüzünden)
+    - **Varchar(n) =** Enfazla 8000 karakter içerir. 8000 bayta kadar yer tutabilir. Bu veri tipini girceğimiz değerin uzunluğu kesin belli olmadığında kullanabiliriz. Örnek: şehirlerin isimleri...
+    - **Nvarchar(n) =** Enfazla 4000 karakter alır. 2 ile 8000 bayt arası yer tutar. (unicode karakterleri yüzünden)
+    - **Varchar(max) =** 2Gb 'a kadar karakter alabilir. 1 073 741 824 karakter alabilir.
+    - **Nvarchar(max) =** 2Gb 'a kadar karakter alabilir. 536 870 912 karakter alabilir. (unicode karakterleri yüzünden)
+    - **Text =** varchar(max) ın aynısı.
+    - **Ntext =** nvarchar(max) ın aynısı. Bu text ve ntext çok fazla kullanılmıyor. Onların yerine varchar, char ... kullanılıyor.
+
+- **Binary Data Tipleri**
+Bu data tiplerini depoya benzemektedir. İçine
+tutabileceği kadar ne koysanız tutar.Örneğin mp3, resim, word belgesi...gibi. Bunlarda parametre alıyor ve yukardaki "var" olayı bunlarda da var. (alanı direk ayırmayıp, biz değer girdikçe artan olay) Zaten 4 tane var bunlardan.
+    - **Binary(n) =** 8000 bayta kadar veri tutabilir.
+    - **Varbinary(n) =** 8000 bayta kadar veri tutabilir.
+    - **Varbinary(max ) =** 2Gb 'a kadar veri tutabilir.
+    - **Image =**2Gb 'a kadar veri tutabilir.( image=varbinary(max) )
+
+
+- **Specialized Data Tipleri**
+Bit, timestamp, uniqueidentifier, sql_variant, cursor, table, Xml.
+    - **Bit=** 0 veya 1 tam sayı değeri alan değişkenlerdir. Yani geriye true veya false bi değer döndürür. Örneğin cinsiyette, evli-bekar, evet-hayır, var-yok gibi şekillerde kullanılabilir.
+    - **Sql_variant=** Bu gireceğimiz değerin çeşidini bilmediğimiz sütunlarda kullanabileceğimiz bir veri tipidir. Yani resim, string, sayı, table ne olduğunu bilmediğim şeyler yerine kullanabilirim. Tabiki 8000 bayta kadar.
+    **Uniqueidentifier=** 16 bayt yer kaplar. Global tek değişkenlerdir (GUID, Globally Unique Identifier).
