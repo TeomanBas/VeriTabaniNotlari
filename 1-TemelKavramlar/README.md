@@ -609,6 +609,10 @@ Microsoft ve Sysbase tarafından  eliştirilmiştir. PL/SQL’ de olduğu gibi t
     - örnek: <code>Select SUM(aylik_ucret) From ucretler;</code>
 - **AVG** verilen kolondaki bütün değerlerin ortalamasını geri döndürür.
     - örnek: <code>Select AVG(aylik_ucret) From ucretler;</code>
+- **COUNT** Bir tablodaki kayıtların sayılma amacı ile bu kayıtlar kullanılır.Null değerlerini sayıma dahil eder.eğer null değer içermeyen tüm kayıtların sayılması isteniyorsa <code>count(sütun_adı)</code> şeklinde bir kullanım yapılmalıdır.
+```sql
+Select COUNT(*) from ogrenci;
+```
 
 ## SQL Deyimleri ve Örnekleri
 - **CREATE DEYİMİ** tablo ve view gibi bir veritabanı nesnesi yaratmayı sağlar.<br>
@@ -662,6 +666,21 @@ Microsoft ve Sysbase tarafından  eliştirilmiştir. PL/SQL’ de olduğu gibi t
     - **ORDER BY:** kayıtlarda belirtilen kolona göre sıralama yapar
     - **DEFAULT:** alan için bir başlangıç değeri verilmesinde kullanılır.
     - **NOT NULL:** alan için bir değerin mutlaka girilmesi gerektiğini gösterir(daha çok birincil anahtar için kullanılır.)
+    - **IN**Liste içindeki değerle karşılatırma yapmak için kullanılır
+    ```sql
+    Select ogrno, ad, soyad, bolum from ogrenci Where bolum IN ('Bilgisayar', 'Elektrik', 'İnşaat')
+    ```
+    - **LIKE**Karakter gruub ile karşılaştırma yapmak için kullanılır.
+        - **M%** M harfi ile başlayanlar
+        - **%A** A harfi ile sona erenler
+        - **%U%** İçerisinde U harfi bulunanlar
+    ```sql
+    Select ogrno, ad, soyad, bolum from ogrenci Where ad LIKE 'M%'
+    ```
+    - **NOT** NOT operatörü, yapılan işlemlerin tersini kontrol etme amacıyla LIKE, IN, BETWEEN gibi deyimlerle kullanılır.
+    ```sql
+    Select * from personel Where dogumyeri NOT IN ('Artvin', 'Rize', 'Trabzon')
+    ```
 - **INSERT DEYİMİ** tabloya veri girmek için kullanılır.
     ```sql
     INSERT INTO <tablo adı>
@@ -715,4 +734,37 @@ Kullanım biçimi;
 örnek;
 ```sql
 SELECT bakiye,bakiye*2 FROM MUSTERI;
+```
+## İlişki Operatörleri
+|operatörler|açıklama|
+|--|--|
+|=|eşit|
+|>|büyük|
+|<|küçük|
+|>=|büyük eşit|
+|<=|küçük eşit|
+|<>|eşit değil|
+
+```sql
+Select ogrno, ad, soyad from ogrenci
+Where yas<18
+```
+```sql
+Select * from personel
+Where maas>=2500
+```
+```sql
+Select * from ogrenci
+Where bolum <> 'Bilgisayar'
+```
+## Mantıksal Operatörler
+- **AND (ve) :**Her iki şartı da sağlıyorsa
+```sql
+Select * from ogrenci
+Where bolum='Bilgisayar' and ortalama>=3.0
+```
+- **OR (veya) :**Şartlardan herhangi birini sağlıyorsa
+```sql
+Select * from personel
+Where gorev='Mühendis' or maas>=3000
 ```
