@@ -459,7 +459,8 @@ Verilerin bulunduğu sunucu üzerinde çalışmalarından dolayı veriler istemc
 
 Eğer 1 numaralı bolum herhangi bir personelde kullanıldıysa BOLUM tablosundan BOLUM_NO değeri 1 olan kaydın kesinlikle silinememesi gerekmektedir. 
 Bu tür kontrollerin yapılarak veri bütünlüğünün korunmasına veri tutarlılığı (referential integrity) denir.Veri tutarlılığını sağlamak amacı ile trigger kullanımı çok tercih edilir.
-# 15. Mysql Veri Türleri
+# 15. Veri Türleri
+- **Mysql için Veri Türleri**
 Veri tabanında tutulan kayıtların yapısı hakkında bilgi sahibi olmak için Alanların bazı özelliklerinin önceden tanımlanması gerekir. Örneğin personel sicil numarası mutlaka tam sayı, ad soyad harflerden oluşması gibi...
 - **Sayısal (Numeric)**:
     - **TINYINT:** Çok küçük tam sayı değerler içindir
@@ -471,19 +472,28 @@ Veri tabanında tutulan kayıtların yapısı hakkında bilgi sahibi olmak için
     - **BIGINT:** Büyük tam sayı değerler içindir. Tam sayı -9223372036854775808’den 9223372036854775807’e
     - **FLOAT:** Sayıları kesirleri ile birlikte tutar. Max. karakter genişliği parametre olarak alınır.(23 basamağa kadar)
     - **DOUBLE:** Sayıları kesirleri ile birlikte tutar. Max. karakter genişliği parametre olarak alınır. (24’ten 53 basamağa kadar)
-    - **DECIMAL:**Sayıları kesirleri ile birlikte tutar.Tam kısmı maksimum 64 Kesirli kısmı maksimum 30 değerini alabilir.
+    - **DECIMAL:** Sayıları kesirleri ile birlikte tutar.Tam kısmı maksimum 64 Kesirli kısmı maksimum 30 değerini alabilir.
 - **Tarih Saat (Date and Time)**
     - **DATETIME:** Yıl+Ay+Gün+Saat+Dakika+Saniye biçimindeki zaman bilgisi YYYY-MM-DD HH:MM:SS
     - **TIMESTAMP:** 1 Ocak 1970'den 18 Ocak 2038'e kadar olan ve Yıl+Ay+Gün+Saat+Dakika+Saniye biçimindeki zaman bilgisi.
     YYYYMMDDHHMMSS
     - **DATE:** 1000-01-01'den 9999-12-31'e kadar değişebilen tarih alanı. YYYY-MM-DD
+    - **time :** hh:mm:ss
 - **Metinsel (String):**
     - **CHAR(n):** n sayısı kadar karakteri olan sabit uzunluklu veridir.
     - **TEXT:** En fazla 65535 karakter alabilen metin alanı
     - **MEDIUMTEXT:** En fazla 16777215 karakter alabilen metin alanı
     - **VARCHAR(n):** n sayısını geçmemek şartıyla değişen boyutta karakter
+    - **Tinytext :** en fazla 255 karakter
+    - **blob :** en fazla 65.535 karakter.
+    - **mediumtext :** en fazla 16.777.215 karakter.
+    - **mediumblob :** en fazla 16.777.215 karakter.
+    - **longtext :** en fazla 4.294.967.295 karakter.
+    - **longblob :** en fazla 4.294.967.295 karakter.
 - **Uzamsal (Spatial):** 
     - **BOOL:** 0 veya 1 değerini alan veri türüdür.
+    - **enum () :** kullanıcı tanımlı liste tipi. ör; enum(‟e',‟h')
+    - **set :** küme tipi. enum benzeri. aynı anda birden fazla kayıt tutabilir.
 
 Yukarıda tanımlanan veri türleri genelde tüm veri tabanlarında vardır.
 
@@ -501,36 +511,6 @@ Yukarıda tanımlanan veri türleri genelde tüm veri tabanlarında vardır.
 |ole object| Veri tabanındaki alanlara resim,ses animasyon gibi nesneler eklenmesi gerektiğidurumlarda kullanılır.Ms Acces veritabanında bulunan bir veri türüdür.|
 |hyperlink|herhangi bir web sitesini bu alandaki veri olarak tanımlayabiliriz www'de bilgilerle direkt bağlantı sağlanabilir|
 |lookup|bir başka tablo ile bağlantı kurularak açılan listeden bilgiseçilmesini ve tanılanan alana taşınmasını sağlar|
-
-- **MYSQL İçin Veri Tipleri:**
-    - text - yazi
-    - char( ) : sabit 0 - 255 karakter.
-    - varchar( ) : değişken 0 - 255 karakter.
-    - tinytext : en fazla 255 karakter.
-    - text : en fazla 65.535 karakter.
-    - blob : en fazla 65.535 karakter.
-    - mediumtext : en fazla 16.777.215 karakter.
-    - mediumblob : en fazla 16.777.215 karakter.
-    - longtext : en fazla 4.294.967.295 karakter.
-    - longblob : en fazla 4.294.967.295 karakter.
-- sayilar
-    - tinyint( ) : -128 ,127 yada 0-255 unsigned.
-    - smallint( ) : -32.768 ,32.767 yada 0 – 65.535 unsigned.
-    - mediumint( ) : -8.388.608 , 8.388.607 yada 0 – 16.777.215 unsigned.
-    - int( ) : -2.147.483.648 , 2.147.483.647 yada 0 – 4.294.967.295 unsigned.
-    - bigint( ) : -9.223.372.036.854.775.808 , 9.223.372.036.854.775.807 yada 0 – 18.446.744.073.709.551.615 unsigned.
-    - float : küçük noktalı sayı.
-    - double( , ) : büyük noktalı sayı.
-    - decimal( , ) : double tipte string şeklinde saklanır.
-- tarİh , saat
-    - date : yyyy-mm-dd
-    - datetime : yyyy-mm-dd hh:mm:ss
-    - timestamp : yyyymmddhhmmss
-    - time : hh:mm:ss
-- diğer
-    - enum () : kullanıcı tanımlı liste tipi. ör; enum(‟e',‟h')
-    - set : küme tipi. enum benzeri. aynı anda birden fazla kayıt tutabilir.
-
 
 - **ORACLE VERi TiPLERi :**
     - CHAR(karakterSayisi) : Maximum 255 karakterlik sabit uzunluktaki alfanümerik verilerin tutulabileceği alandır.
@@ -594,3 +574,145 @@ Bit, timestamp, uniqueidentifier, sql_variant, cursor, table, Xml.
     - **Bit=** 0 veya 1 tam sayı değeri alan değişkenlerdir. Yani geriye true veya false bi değer döndürür. Örneğin cinsiyette, evli-bekar, evet-hayır, var-yok gibi şekillerde kullanılabilir.
     - **Sql_variant=** Bu gireceğimiz değerin çeşidini bilmediğimiz sütunlarda kullanabileceğimiz bir veri tipidir. Yani resim, string, sayı, table ne olduğunu bilmediğim şeyler yerine kullanabilirim. Tabiki 8000 bayta kadar.
     **Uniqueidentifier=** 16 bayt yer kaplar. Global tek değişkenlerdir (GUID, Globally Unique Identifier).
+
+# 16. Sql (Structed Query Language)
+İlişkisel Veritabanı Yönetim Sistemleri (Relational Database Management Systems- RDBMS) modeli ilk önce 1970 yılında Dr. E.F. Codd tarafından tarif edilmiştir. SQL veya Structured English Query Language (SEQUEL), IBM firması tarafından Codd‟un modelini kullanmak için geliştirilmiştir. SEQUEL daha sonra SQL olmuştur. 1979 yılında, Relational Software (şu an Oracle Corporation), SQL‟ in ilk ticari uygulamasını geliştirmiştir. Bugün SQL, ilişkisel veritabanı yönetim sistemleri standardı olarak kabul edilmektedir.
+SQL (Structured Query Language) kendisi bir programlama dili olmamasına rağmen bir çok kişi tarafından programlama dili olarak bilinir. SQL herhangi bir veri tabanı ortamında kullanılan bir alt dildir (sub language). SQL ile yalnızca veri tabanı üzerinde işlem yapabiliriz. SQL cümlecikleri kullanarak veri tabanına kayıt ekleyebilir, olan kayıtları değiştirebilir silebilir ve bu kayıtlardan listeler oluşturabiliriz.Standart SQL ifadelerinde fonksiyon, döngü, karşılaştırma ifadeleri gibi programlamaya yönelik ifadeler kullanılamamaktadır. Bu sorunu çözmek için veritabanı sistemlerinde PL/SQL ve T-SQL sorgulama dilleri geliştirilmiştir. Ancak programcılıkta kullanılan if, case, for gibi ifadeler PL/SQL ve T-SQL’ de farklı şekillerde kullanılmaktadır.
+
+- **PL/SQL (Procedural Language/Structured Query Language)**
+Oracle tarafından geliştirilen ve Oracle veritabanı sistemlerine özel dildir. Temel SQL komutlarının yanı sıra programlamada akış kontrollerini ve değişken kullanımına olanak sağlar.
+- **T-SQL (Transact-Structured Query Language)**
+Microsoft ve Sysbase tarafından  eliştirilmiştir. PL/SQL’ de olduğu gibi temel SQL komutlarının yanı sıra akış kontrollerine ve değişken kullanımına olanak sağlar.
+
+- **SELECT** -> verileri seçebilmemizi sağlar
+    - <code>SELECT * FROM personel;</code> personel tablosundaki tüm kayıtları tüm sutunları getir.
+    - <code>SELECT ad, soyad FROM personel;</code> personel tablosunun içerisinden ad ve soyad sutunları ile birlikte kayıtları getirir.
+- **INSERT** -> tablo içerisine yeni kayıt eklememizi sağlar
+- **UPDATE** -> tablo içerisinden kayıtları değiştirmemizi sağlar
+- **DELETE** -> kayıt yada kayıtları silmemizi sağlar
+- **FROM** -> hangi tabloların seçileceğini gösterir.
+- **WHERE** -> sorgu cümlelerine şart ifadesi ekler dönecek sonuçları filtre etmizi sağlar yani kayıtları belli bir şarta göre getirir.bu cümlecik ile şart tanımları yapılır.
+    - örnek: <code>SELECT * FROM personel WHERE ad='Ahmet';</code>
+    - örnek: <code>SELECT * FROM personel WHERE Dogum_tarihi < '13.04.1959'</code>
+- **BETWEEN** -> aralıklı sorgulama yapmak istersek kullanabiliriz.
+    - örnek: <code>SELECT * FROM öğrenciler WHERE öğrenci_no> =240 AND öğrenci_no < =  400;</code> bunu daha kısa yazbiliriz.<code>SELECT * FROM öğrenciler WHERE öğrenci_no BETWEEN 240 AND 400;</code>
+- **ORDER BY (SIRALA)** -> Bu komut ile belirtilen kolona göre sıralama yapılabilir. **ASC** kullararak küçükten büyüğe , **DESC** büyükten küçüğe sıralama yapılabilir. **ASC** kullanılmayabilir. çünkü default olarak **ASC** sıralama yapılır.
+    - örnek <code>SELECT öğrenci_no,adı,soyadı FROM öğrenciler ORDER BY adı, soyadı DESC,öğrenci_no;</code>
+    DESC ' li durumda yanına yazıp belirtilir, yazılmazsa ASC direk kabul edilir.
+    - <code>SELECT * FROM personel ORDER BY ad, soyad;</code>burada sıralama ada göre yapılır eğer aynı ad'a sahip birçok kayıt varsa ise sıralama soyada göre yapılır.başka bir örnek te burada sıralama sırasıyla ad soyad ve no ya göre belirtilen sıralama şekli ile yapılacak.
+    <code>SELECT öğrenci_no,adı,soyadı FROM öğrenciler ORDER BY adı DESC, soyadı DESC, öğrenci_no ASC;</code>
+- **MAX** tablo içinde verilen kolondaki en büyük değeri geri döndürür.
+    - örnek: <code>Select per_sicil_no,MAX(aylik_ucret) From ucretler;</code> burada ucretler tablosundaki en yüksek maaşa sahip personelin sicil numarası dönecektir.
+- **MIN** tablo içinde verilen kolondaki en küçük değeri geri döndürür kullanımı MAX gibidir.
+    - örnek: <code>Select per_sicil_no,MIN(aylik_ucret) From ucretler ;</code>
+- **SUM** verilen kolondaki bütün değerlerin toplamını geri döndürür.
+    - örnek: <code>Select SUM(aylik_ucret) From ucretler;</code>
+- **AVG** verilen kolondaki bütün değerlerin ortalamasını geri döndürür.
+    - örnek: <code>Select AVG(aylik_ucret) From ucretler;</code>
+
+## SQL Deyimleri ve Örnekleri
+- **CREATE DEYİMİ** tablo ve view gibi bir veritabanı nesnesi yaratmayı sağlar.<br>
+**yapısı;**
+    ```sql
+    CREATE TABLE Musteri
+    (
+    mus_id char(4),
+    mus_ad varchar(40),
+    ili varchar(20),
+    ulke char(2),
+    adres varchar(30)
+    )
+    ```
+    NOT: Char, varchar, integer, numeric gibi sözcükler tablo alanlarındaki temsil edilecek verinin türünü belirtir. SQL'de SMALLINT, VARCHAR, DECIMAL(x,y), FLOAT(x;y), DATE, LOGICAL, TIME, TIMESTAMP, GRAPHIC(n) gibi alan veri türleri vardır.<br>
+    **örnek** 
+    ```sql
+    CREATE TABLE PERSONELYAKIN(
+    PERSONEL_ID int,
+    YAKIN_ID int,
+    YAKIN_AD varchar(10),
+    YAKIN_SOYAD varchar(10)
+    )
+    ```
+- **ALTER DEYİMİ** daha önce yaratılmış nesnenin değiştirilmesini sağlar örnek olarak bir tablonun tasarımı değiştirilebilir.
+    ```sql
+    ALTER TABLE Musteri
+    ADD tel varchar(20) NOT NULL
+    ```
+    yukarıdaki örnekte Musteri tablosunun kolonlarına tel adında bir kolon daha eklenmiştir.
+- **DROP DEYİMİ** bir nesnenin silinmesini sağlar.
+    ```sql
+    DROP TABLE MUSTERI
+    ```
+    yukarıdaki örnekte MUSTERI tablosu silinmiştir.
+- **SELECT DEYİMİ** veritabanındaki verilere erişmenin diğer bir deyişle onları görmenin ya da onları elde etmenin en sık kullanılan yöntemidir.<br>
+    Temel Yapısı;
+    ```sql
+    SELECT [ALL] [DISTINCT] liste [INTO yeni tablo] FROM [tablo]
+    [WHERE ifade]
+    [GROUP BY ifade]
+    [HAVING ifade]
+    [ORDER BY ifade]
+    [COMPUTE ifade]
+    ```
+    - **ALL :** bütün satırların sonuçlarda görünmesini sağlar.
+    - **DISTINCT :** tekrarlı satırların görünmemesini sağlar.
+    - **FROM :** tablonun seçilmesini sağlar
+    - **GROUP BY:** satırların gruplanmasını sağlar.
+    - **HAVING :** sözcüpü de kayıtlarda kısıtlama yapar ancak hesaplamayı etkilemez.
+    - **ORDER BY:** kayıtlarda belirtilen kolona göre sıralama yapar
+    - **DEFAULT:** alan için bir başlangıç değeri verilmesinde kullanılır.
+    - **NOT NULL:** alan için bir değerin mutlaka girilmesi gerektiğini gösterir(daha çok birincil anahtar için kullanılır.)
+- **INSERT DEYİMİ** tabloya veri girmek için kullanılır.
+    ```sql
+    INSERT INTO <tablo adı>
+    (sütunlar listesi) VALUES (değerler listesi)
+    ```
+    örnek;
+    ```sql
+    INSERT INTO MUSTERI
+    (kodu,ad,soyad,grup,il,bakiye) VALUES
+    („05‟,‟Muhammet‟,‟BAYKARA‟,‟ihraç‟,‟Elazığ‟,‟500000‟)
+    ```
+- **UPDATE DEYİMİ** tablodaki verileri güncellemek için kullanılır.Genellikle güncelleştirilecek satırı belirtmek için WHERE ile beraber kullanılır.
+Kullanım biçimi:
+    ```sql
+    UPDATE tablo
+    SET kolon = ifade
+    WHERE arama_koşulu
+    ```
+    örnek;
+    ```sql
+    UPDATE siparis
+    SET fiyatı= fiyatı * 1.1
+    ```
+    yurıdaki örnekte saiparis tablosundaki tüm kayıtların fiyat değeri %10 arttı.
+    örnek;
+    ```sql
+    UPDATE MUSTERI
+    SET bakiye=bakiye *1.5
+    Where ad=‟Deniz‟
+    ```
+- **DELETE DEYİMİ** bir tablodaki verileri silmek için kullanılır where ile beraber kullanılmassa tüm veriler silinir.
+Kullanım biçimi;
+    ```sql
+    DELETE tablo
+    WHERE arama_koĢulu
+    ```
+    örnek;
+    ```sql
+    DELETE MUSTERI
+    WHERE bakiye<100000
+    ```
+
+## Aritmetik işlemler
+|operatörler|açıklama|
+|--|--|
+|+|toplama|
+|-|çıkarma|
+|/|bölme|
+|*|çarpma|
+
+örnek;
+```sql
+SELECT bakiye,bakiye*2 FROM MUSTERI;
+```
