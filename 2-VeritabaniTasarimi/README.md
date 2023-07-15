@@ -319,3 +319,80 @@ Yukarıdaki fonksiyonel bağımlılıklardan 4.’sü bir aday anahtar değildir
 Örneğin SG5 personeli, B301 odasındadır, bu personelin odasının değişmesi durumunda veri tabanında ya veri bütünlüğü sorunu olur ya da birden fazla erişim gerekir. Bu sorunun çözümü olarak BCNF şeklinde olan aşağıdaki iki tabloya bölünmesi gerekir:
 ![boycecoddnf-a](./img/boycecoddnf-a.png)
 ![boycecoddnf-b](./img/boycecoddnf-b.png)
+
+## 4NF
+Birincil anahtar olan sütunlar ile anahtar olmayan sütunlar arasında birden fazla bağımsız 1-n ilişkiye izin verilmez.4NF sağlamak için her bağımsız 1-n ilişki için ayrı tablo oluşturmak gerekir.
+
+|ogrt_el|ad|soyad|bolumid|ders|
+|--|--|--|--|--|
+|a123|kerem|metin|btp|veritabani|
+|a124|ahmet|kaçar|elk|elektrik mak.|
+|a125|mustafa|çağlayan|mak|teknik resim|
+|a126|murat|kaçmaz|bio|enformatik|
+
+Tablo incelendiğinde ilk olarak herhangi bir sorun olmadığı görülür bu tablo için birincil anahtar ogrt_el sütunudur.Bu tabloya göre her öğretim elemanı sadece bir derse girebilir.Aynı öğretim elemanı için iki veya daha fazla ders girilmek istendiğinde birincil anahtardan dolayı aynı ogrt_el kodu kullanılamayacak dolayısıyla da yeni ders girilemeyecektir ve 1-n ilişki söz konusu olmyacaktır.4NF kuralını ve 1-n ilişkiyi sağlalam için mevcut tablo iki ayrı tabloya bölünür aşağıda 4NF kuralına uygun tablolar verilmiştir.
+
+|ogrt_el|ad|soyad|bolumid|ders|
+|--|--|--|--|--|
+|a123|kerem|metin|btp|veritabani|
+|a124|ahmet|kaçar|elk|elektrik mak.|
+|a125|mustafa|çağlayan|mak|teknik resim|
+|a126|murat|kaçmaz|bio|enformatik|
+
+|ogrt_el|ders|
+|--|--|
+|a123|veritabani|
+|a123|elektrik mak.|
+|a123|teknik resim|
+|a123|enformatik|
+|a123|internet prog|
+|a123|donanım|
+|a123|matematik|
+
+## 5NF
+tekrarları önlemek için her tabloyu mümkün olduğunca küçük parçalara bölmek gerekir.aslında ilk 4 kural bu işlemi gerçekleştirir ama bu kuralllar kapsamında olmayan tekrarlanmalar da beşinci normalizasyon kuralı ile giderilir.
+
+Örnek:aşağıda ürün marka ve satış danışmanı bilgisini içeren bir tablo verilmiştir.
+
+|satis_danismain|marka|urun|
+|--|--|--|
+|D001|ABC|U001|
+|D001|ABC|U002|
+|D001|CDE|U001|
+|D002|CDE|U003|
+|D002|EFG|U001|
+|D003|ABC|U003|
+|D003|CDE|U004|
+
+Tablo incelendiğinde marka ve ürün bilgisi satış sanışmanına göre değişmektedir. Ve rastgele değerler değildir. Marka ve ürün bilgilerini başka tabloda tutarak satış danışmanı için belirlenen marka ve ürün dışında veri girişi engellenebilir.
+
+|satis_danismain|marka|
+|--|--|
+|D001|ABC|
+|D001|ABC|
+|D001|CDE|
+|D002|CDE|
+|D002|EFG|
+|D003|ABC|
+|D003|CDE|
+
+|satis_danismain|urun|
+|--|--|
+|D001|U001|
+|D001|U002|
+|D001|U001|
+|D002|U003|
+|D002|U001|
+|D003|U003|
+|D003|U004|
+
+|marka|urun|
+|--|--|
+ABC|U001|
+ABC|U002|
+CDE|U001|
+CDE|U003|
+EFG|U001|
+ABC|U003|
+CDE|U004|
+
