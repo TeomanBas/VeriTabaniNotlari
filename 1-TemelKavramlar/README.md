@@ -666,7 +666,7 @@ Select COUNT(*) from ogrenci;
     - **ORDER BY:** kayıtlarda belirtilen kolona göre sıralama yapar
     - **DEFAULT:** alan için bir başlangıç değeri verilmesinde kullanılır.
     - **NOT NULL:** alan için bir değerin mutlaka girilmesi gerektiğini gösterir(daha çok birincil anahtar için kullanılır.)
-    - **IN**Liste içindeki değerle karşılatırma yapmak için kullanılır
+    - **IN:** Liste içindeki değerle karşılatırma yapmak için kullanılır
     ```sql
     Select ogrno, ad, soyad, bolum from ogrenci Where bolum IN ('Bilgisayar', 'Elektrik', 'İnşaat')
     ```
@@ -681,6 +681,16 @@ Select COUNT(*) from ogrenci;
     ```sql
     Select * from personel Where dogumyeri NOT IN ('Artvin', 'Rize', 'Trabzon')
     ```
+    - **uniqueidentifier :** sütun değeri rasgele oluşturulmuş bir id değerini ifade eder ve eklenen veriler **newid()** fonksiyonu ile rasgele bir id değerine sahip olur.
+    ```sql
+    CREATE TABLE cust
+    (
+    cust_id uniqueidentifier NOT NULL DEFAULT newid(),
+    ad nvarchar(20),
+    soy nvarchar(20)
+    )
+    ```
+    ![uniquedentifier](../img/uniqueidentifier.png)
 - **INSERT DEYİMİ** tabloya veri girmek için kullanılır.
     ```sql
     INSERT INTO <tablo adı>
