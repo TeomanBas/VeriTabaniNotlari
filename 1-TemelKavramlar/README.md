@@ -763,7 +763,7 @@ Where bolum <> 'Bilgisayar'
 Select * from ogrenci
 Where bolum='Bilgisayar' and ortalama>=3.0
 ```
-- **OR (veya) :**Şartlardan herhangi birini sağlıyorsa
+- **OR (veya) :** Şartlardan herhangi birini sağlıyorsa
 ```sql
 Select * from personel
 Where gorev='Mühendis' or maas>=3000
