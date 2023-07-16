@@ -177,7 +177,7 @@ Mevcutluğu diğer varlık türüne bağlı olan varlık türüdür. Eğer bir v
 ![zayif-varlik-kumeleri](../img/zayif-varlik-kumeleri.png)
 Üniversite-fakülte ilişkisinde, bir fakülte üniversite olmadan olamayacağı için ve aynı fakülte isminde başka üniversitelerde fakülte olabileceği için fakülte varlık kümesi zayıf varlık kümesidir.
 ![zayif-varlik-kumesi-tabloya-donusturme](../img/zayif-varlik-kumesi-tabloya-donusturme.png)
-**Zayıf Varlık Kümelerinin Tabloya Dönüştürülmesi :**
+
 
 ---
 # 4. Varlık-İlişki Şemaları (Entity-Relationship Model)
@@ -200,6 +200,20 @@ Varlıkların aralarında kurulabilecek ilişki türleri aşağıdaki gibi tanı
 ![varlik-iliski-personel-bolum-1](../img/varlik-iliski-personel-bolum-1.png)
 
 ![varlik-iliski-film-sinema](../img/varlik-iliski-film-sinema.png)
+## PK,PF,FK TANIMLAMALARI
+Bazı kaynaklarda gösterimlerde kullanılabiliyorlar.
+- **PK :** Yanında bulunduğu niteliğin(sütunun) Primary Key olduğunu gösterir.<br>
+![pk](../img/pk.png)
+<br>`1-n` ve tanımlayan ilişki olduğunu gösterir.Yani ilişkiyi oluşturan nitelik diğer varlık içerisinde pk olarak kullanılmaktadır.Örneğin `KATEGORILER` varlığının `kategori_no` niteliği `KITAP_KATEGORI` varlığında fk'dir ve "ISBN" niteliği ile birleşerek pk özelliği sağlar.
+
+- **FK :**Yanında bulunduğu niteliğin(sütunun) Foreign Key(Yabancıl anahtar-dış anahtar) olduğunu gösterir.<br>
+![fk](../img/fk.png)
+<br>`1-n` ve tanımlayan bir ilişki olduğunu gösterir.Temel olarak PK ile aynı özelliğe sahiptir.Diğerlerinden farkı, 1 tarafındaki niteliğin içerdiği değerlerden herhangi birisi n tarafında hiç kullanılmamış olabilir yani `YAZARLAR` varlığı içerisinde bulunan bir yazara ait kütüphanede hiç kitap bulunmayabilir.
+
+- **PF :** Yanında bulunduğu niteliğin(sütunun) Foreign Key olduğunu ve başka nitelikle birleştirilerek Primary Key oluşturduğunu gösterir.
+![pf](../img/pf.png)<br> 
+şeklinde gösterimi vardır.`1-n` ve tanımlamayan bir ilişki olduğunu gösterir.Yani nitelik diğer varlık içerisinde pk değildir.Örneğin Adresler varlığının `adres_no` niteliği `UYELER` varlığında fk'dır ama Uyeler için PK özelliği sağlamaz
+
 ---
 # 5. Normalizasyon
 Veritabanının tasarım aşamasında veri tekrarını, veri kaybını veya veri yetersizliğini önlemek için gerçekleştirilen işlemlere normalizasyon denir.
