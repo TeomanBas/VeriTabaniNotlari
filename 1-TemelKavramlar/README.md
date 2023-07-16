@@ -579,6 +579,16 @@ Bit, timestamp, uniqueidentifier, sql_variant, cursor, table, Xml.
 İlişkisel Veritabanı Yönetim Sistemleri (Relational Database Management Systems- RDBMS) modeli ilk önce 1970 yılında Dr. E.F. Codd tarafından tarif edilmiştir. SQL veya Structured English Query Language (SEQUEL), IBM firması tarafından Codd‟un modelini kullanmak için geliştirilmiştir. SEQUEL daha sonra SQL olmuştur. 1979 yılında, Relational Software (şu an Oracle Corporation), SQL‟ in ilk ticari uygulamasını geliştirmiştir. Bugün SQL, ilişkisel veritabanı yönetim sistemleri standardı olarak kabul edilmektedir.
 SQL (Structured Query Language) kendisi bir programlama dili olmamasına rağmen bir çok kişi tarafından programlama dili olarak bilinir. SQL herhangi bir veri tabanı ortamında kullanılan bir alt dildir (sub language). SQL ile yalnızca veri tabanı üzerinde işlem yapabiliriz. SQL cümlecikleri kullanarak veri tabanına kayıt ekleyebilir, olan kayıtları değiştirebilir silebilir ve bu kayıtlardan listeler oluşturabiliriz.Standart SQL ifadelerinde fonksiyon, döngü, karşılaştırma ifadeleri gibi programlamaya yönelik ifadeler kullanılamamaktadır. Bu sorunu çözmek için veritabanı sistemlerinde PL/SQL ve T-SQL sorgulama dilleri geliştirilmiştir. Ancak programcılıkta kullanılan if, case, for gibi ifadeler PL/SQL ve T-SQL’ de farklı şekillerde kullanılmaktadır.
 
+**Seçme Sorguları:** En sık kullanılan sorgu türüdür. Seçme sorguları, bilgileri “veri sayfası görünümü”nde gösteren veri tabanı nesnesi türüdür. Sorgu, verileri bir veya birden fazla tablodan, mevcut sorgulardan veya bunların her ikisinden alabilmektedir.
+
+**Parametre Sorguları:** Parametre sorguları, çalıştırıldığı zaman bir ölçüt girilmesini sağlayan iletişim kutusunu açan sorgulardır. Örneğin bir okuldaki personelin ocak ayında sevk aldığı günleri görmek istiyorsak, açılan iletişim kutusuna ölçüt olarak istenilen tarih aralıkları girilir ve bu tarihler arasındaki veriler listelenir.
+
+**Çapraz Sorgular:** Bir tablodaki bilgileri analiz etmek, karşılaştırmak ve tablonun özetini hazırlamak için kullanılan sorgu türüdür. Belirtilen iki alana göre istenilen işlemi (toplama, ortalama, vs.) tablo şeklinde göstermekte kullanılır.
+
+**Eylem Sorguları:** Tek işlemle birçok kayıtta değişiklik yapan sorgulardır. Silme sorgusu, güncelleştirme sorgusu, ekleme sorgusu ve tablo yapma sorgusu olmak üzere dört çeşit eylem sorgusu vardır.
+
+**SQL Sorguları:** SQL deyimlerini kullanarak veri tabanını güncelleştirme ve yönetme ile ilgili oluşturulan sorgulardır.
+
 - **PL/SQL (Procedural Language/Structured Query Language)**
 Oracle tarafından geliştirilen ve Oracle veritabanı sistemlerine özel dildir. Temel SQL komutlarının yanı sıra programlamada akış kontrollerini ve değişken kullanımına olanak sağlar.
 - **T-SQL (Transact-Structured Query Language)**
@@ -637,7 +647,7 @@ Select COUNT(*) from ogrenci;
     YAKIN_SOYAD varchar(10)
     )
     ```
-- **ALTER DEYİMİ** daha önce yaratılmış nesnenin değiştirilmesini sağlar örnek olarak bir tablonun tasarımı değiştirilebilir.
+- **ALTER DEYİMİ** daha önce yaratılmış nesnenin değiştirilmesini sağlar örnek olarak bir tablonun tasarımı değiştirilebilir.Bir tabloya (ilişkiye) yeni bir özellik eklemek,mevcut bir özelliği silmek veya alfasayısal bir özelliğin uzunluğunu değiştirmek için kullanılır. Yeni eklenen özellik NULL değer alacağı için, özellik NOT NULL tanımlanamaz var olan özellikler için tanımlanabilir.ancak bu durumda bu satırların bu sütununda null değer olmamasını gerektirir.
     ```sql
     ALTER TABLE Musteri
     ADD tel varchar(20) NOT NULL
