@@ -1,5 +1,14 @@
 # Veritabanı Tasarımı
 - **Tasarım yapılırken izlenecek adımlar**
+    - **Gereksinimler**
+        - Sistemin tam ve doğru tanımının yapılması
+        - Kullanıcı kitlesinin tanımlanması
+        - Kullanıcı gereksinimlerinin belirlenmesi
+        - Sistemin beklenen işlevleri yerine getirmesi için sahip olması gereken özellikler.
+            - kullanıcıların mevcut sistemde kullandıkları yöntemler
+            - Sistem yapısı
+            - iş kuralları
+            - yaşanan problemler
     - Oluşturulacak sistemin nelerden oluşması gerektiği ve hangi işlemlerin hangi aşamada yapıldığı belirlenerek rapor tutulmalıdır.
     - Oluşturulan bu metne göre varlık ilişki modelinin oluşturulması
     - Varlık ilişki modelinin tablolara dönüştürülerek tabloların oluşturulması
@@ -82,6 +91,64 @@ ilk üç düzey ihlal edilirse;
 
 - Veri bütünlüğünün sağlanması 
     - gereksiz veri tekrarını önlyerek verilerdeki bozulmaları önlemek
+    - Update/Delete işlem kısıtları
+        - Yabancıl anahtar kısıtı ile raferans alınan tablodaki değer üzerinde değişiklik yada silme işlemi yapılacağında ne tür işlemlerin yapılabileceği ile ilgili kısıtır
+            - **No Action**
+                Yabancıl anahtar tarafından referans verilen değer silinmeye ya da değiştirilmeye çalışıldığında işlem gerçekleşmez.
+                ```sql
+                CREATE TABLE yarismacilar(
+                no INT(4) PRIMARY KEY,
+                ad VARCHAR(30),
+                soyad VARCHAR(30),
+                iladi CHAR (20) NOT NULL,
+                CONSTRAINT FK_iladi FOREIGN KEY (iladi) REFERENCES iller(adi) ON DELETE NO ACTION  
+                );
+                ```
+            - **Set Null**
+                Yabancıl anahtar tarafından referans verilen değer silinmeye ya da değiştirilmeye çalışıldığında, yabancıl anahtarın bulunduğu tablodaki ilgili alana boş değer atanır.
+                ```sql
+                CREATE TABLE yarismacilar(
+                no INT(4) PRIMARY KEY,
+                ad VARCHAR(30),
+                soyad VARCHAR(30),
+                iladi CHAR (20) NOT NULL,
+                CONSTRAINT FK_iladi FOREIGN KEY (iladi) REFERENCES iller(adi) ON DELETE SET NULL
+                );
+                ```
+            - **Cascade**
+                Yabancıl anahtar tarafından referans verilen değer silinmeye ya da değiştirilmeye çalışıldığında, yabancıl anahtarın bulunduğu tablodaki ilgili alana değişiklik yansıtılır.
+                ```sql
+                CREATE TABLE yarismacilar(
+                no INT(4) PRIMARY KEY,
+                ad VARCHAR(30),
+                soyad VARCHAR(30),
+                iladi CHAR (20) NOT NULL,
+                CONSTRAINT FK_iladi FOREIGN KEY (iladi) REFERENCES iller(adi) ON DELETE CASCADE
+                );
+                ```
+            - **Set Default**
+                Yabancıl anahtar tarafından referans verilen değer silinmeye ya da değiştirilmeye çalışıldığında, yabancıl anahtarın bulunduğu tablodaki ilgili alana daha önceden tanımlanmış olan varsayılan değer atanır.
+                ```sql
+                CREATE TABLE yarismacilar5(
+                no INT(4) PRIMARY KEY,
+                ad VARCHAR(30),
+                soyad VARCHAR(30),
+                iladi CHAR (20) NOT NULL,
+                CONSTRAINT FK_iladi FOREIGN KEY (iladi) REFERENCES iller(adi) ON DELETE SET DEFAULT
+                );
+                ```
+        - Tanımlamalı veri bütünlüğünün üç türü vardır.
+            1. Alan bütünlüğü(domain) : Alan kısıtları bir veya birkaç sütun ile ilişkilidir. Temel amaç sütunun ya da birkaç sütunun tanımlanan kritere uygun olmasıdır.  Tabloya yeni satır eklendiğinde ya da var olan satırlardan birisi update edildiğinde kısıt gerekli kontrolü yapar.
+            2. varlık bütünlüğü(entity) : Varlık kısıtları satırlarla ilgilidir. Bu tarz kısıtlar tüm sütunu dikkate almak yerine özellikle tek bir satır ile ilişkilidir. Bir satırın bir kolonundaki bilginin diğer hiç bir satırda bulunmaması garanti altına alır. 
+            3. Referans bütünlüğü (Referential) : Bir sütundaki bilginin diğer bir sütun ile eşleşmesi zorunluluğunu sağlayarak bütünlüğü korur. Eşleşen sütunlar farklı iki tablonun sütunları olabileceği gibi aynı tablonun sütunları da olabilir.
+            ![tanimsal-butunluk](./img/tanimsal-veri-butunluk.png)
+        - Rule 
+            Check constraint ile aynı işi yapan kurallar oluşturulabilir. Constraint’ten farkı tablodan ayrı bir nesne olarak oluşturulmasıdır Bu nedenle oluşturulduktan sonra hangi tablonun hangi sütunu ile ilişkili olduğu belirtilmek üzere bağ kurulmalıdır.
+        - Default
+            Default nesnesi default constraint ile aynı işleve sahiptir. Constraint’ten farkı ayrı bir nesne gibi derlenmesidir. Default nesnesine destek verilmesinin nedeni geriye dönük uyumluluğu sağlamak içindir.
+        - Veri Bütünlüğü ne kadar alt katmanda çözülürse o kadar iyi olur.
+        ![veri-butunluk-2](./img/veri-butunluk-1.png)
+
 - Uygulamadan Bağımsızlık
     - Uygulama değişse bile veritabanı tutarlı olarak çalışmalı
 - Performansı Artırmak
