@@ -1,3 +1,107 @@
+# UML (Unified Modeling Language)
+- yazılım ve donanımların bir arada düşünülmesi gereken,
+- Zor ve karmaşık programların,
+- Özellikle birden fazla yazılımcı tarafından kodlanacağı durumlarda,
+- Standart sağlamak amacıyla endüstriyel olarak geliştirilmiş grafiksel bir dildir.
+- Programlama dili- Diyagram çizme ve ilişkisel modelleme dili
+- UML 'in doğuşu son yıllarda yazılım endüstrisindeki en büyük gelişmelerden biri olarak kabul edilebilir.
+- UML 1997 yılında yazılımın, diyagram şeklinde ifade edilmesi için bir standartlar komitesi tarafından oluşturuldu. 
+- Diğer dallardaki mühendislerin standart bir diyagram çizme aracı -Programcıların UML
+- UML yazılım sisteminin önemli bileşenlerini tanımlamayı, tasarlamayı ve dokümantasyonunu sağlar
+- Yazılım geliştirme sürecindeki tüm katılımcıların (kullanıcı, iş çözümleyici, sistem çözümleyici, tasarımcı, programcı,...) gözüyle modellenmesine olanak sağlar,
+- UML gösterimi nesneye dayalı yazılım mühendisliğine dayanır.
+- Yazılımın geniş bir analizi ve tasarımı yapılmış olacağından kodlama işlemi daha kolay ve doğru olur
+- Hataların en aza inmesine yardımcı olur
+- Geliştirme ekibi arasındaki iletişimi kolaylaştırır
+- Tekrar kullanılabilir kod sayısını artırır
+- Tüm tasarım kararları kod yazmadan verilir
+- Yazılım geliştirme sürecinin tamamını kapsar “resmin tamamını” görmeyi sağlar 
+![uml-ornek](./img/grafiksel-gosterim.png)
+- Bir yazılım sistemi oluşturulurken sadece tek boyutta analiz ve modelleme yapılmaz. 
+- Bu amaçla; yazılım geliştirme sürecinin farklı aşamalarında farklı UML diyagramlarını kullanmak gerekmektedir.
+- 4+1 bakış, bu diyagramları sınıflandırmak ve yazılım yaşam çevrimindeki kullanım yerlerini ortaya koymak için kullanılan bir kavramdır.
+- User View
+    - Müşteri gereksinimlerini ortaya koymak ve müşteriye, sistemi tanıtmak amacı ile kullanılan bakış açısıdır. 
+    - Bazı kaynaklarda; kullanım senaryosu (use case) bakışı olarak da açıklanmaktadır. 
+    - Bu amaçla "kullanım senaryosu" (use case) diyagramları kullanılmaktadır.
+- Structural View
+    - Sistemin nelerden meydana geldiğini gösteren bakış açısıdır. 
+    - Bu amaçla; "sınıf" (class) diyagramları ve "nesne" (object) diyagramları kullanılmaktadır.
+- Davranış Bakışı (Behavioral View)
+    - Bu amaçla; «ardışık" (sequence), "işbirliği" (collaboration), "durum« (state)  ve «etkinlik" (activity) diyagramları kullanılmaktadır.
+- Implementation View
+    - Sistemin alt modüllerini ortaya koyan bakış açısıdır. 
+    - Bu amaçla; "bileşen" (component) diyagramları kullanılmaktadır.
+- Environment View
+    - Donanımın, fiziksel mimarisinin ortaya konduğu bakış açısıdır. 
+    - Bu amaçla; "dağıtım" (deployment) diyagramları kullanılmaktadır. 
+- **Sınıf diyagramları**
+    - Sınıf Diyagramları UML 'in en sık kullanılan diyagram türüdür.
+    - Sınıflar nesne tabanlı programlama mantığından yola çıkarak tasarlanmıştır.
+    - Sınıf diyagramları bir sistem içerisindeki nesne tiplerini ve birbirleri ile olan ilişkileri tanımlamak için kullanılırlar.
+    - Sınıfların adı,nitelikleri ve işlevleri vardır.Bunlara ek olarak "notes","constraints".
+    ![siniflar](./img/siniflar.png)
+    ![siniflar-1](./img/siniflar-1.png)
+    - Sınıflar arasındaki ilişkiyi göstermek için iki sınıf arasına düz bir çizgi çekilir.
+    - İlişkiyi gösteren çizginin üzerine ilişkinin türü yazılır.
+    ![siniflar-2](./img/siniflar-1.png)
+    - Bazı durumlarda sınıflar arasındaki ilişki, bir çizgiyle belirtebilecekşekilde basit olmayabilir.
+    - Bu durumda ilişki sınıfları kullanılır.
+    - İlişki sınıfları bildigimiz sınıflarla aynıdır.
+    - Sınıflar arasındaki ilişki eğer bir sınıf türüyle belirleniyorsa UML ile gösterilmesi gerekir.
+    ![siniflar-3](./img/siniflar-3.png)
+    ![ornek-sinif-diyagram](./img/ornek-sinif-diagram.png)
+- **Nesne diyagramlari**
+    - Nesne Diyagramları nesneler ve aralarındaki bağıntıları gösterirler.
+    - Nesneler, sınıfların somut örnekleri olduğundan sınıf özelliklerinin değer almış halidirler. 
+    ![ornek-nesne-diyagram](./img/ornek-nesne-diyagram.png)
+- **Bileşen diyagramları**
+    - Bileşen Diyagramları yazılım sistemine daha yüksek bir seviyeden bileşenler seviyesinden bakabilmeyi sağlar.
+    - Bunlar sistemdeki sınıflar, çalıştırılabilen program parçaları kütüphane bileşenleri veya veritabanı tabloları olabilir.
+    - Bu gösterim bileşenler, arayüzler ve bağımlılık ilişkilerinden oluşur ve sistemin fiziksel gösterimini sağlar.
+    ![ornek-bilesen-diyagram](./img/ornek-bilesen-diyagram.png)
+- **Dağılım diyagramları**
+    - Sistemin çalışma platformundaki durumlarını gösterirler.
+    - Sistemdeki yürütülebilen parçalar, kütüphaneler, tablolar ve dosyalar gibi bileşenlerin dağılımını belirler.
+    - Bu diyagramlar, sistem donanım mimarisinin gösterilmesi, gerekli donanım bileşenlerinin tanımlanması amacıyla kullanılabilirler.
+    ![ornek-dagilim-diyagramlari](./img/ornek-bilesen-diyagram.png)
+- **Kullanım senaryosu diyagramları**
+    - Kullanım senaryosu diyagramları sistemin işlevsel gereksinimlerinin ortaya çıkarılması için kullanılır.
+    - Sistemin kullanıcısının bakış açısıyla modellenmesi amacıyla kullanılır.
+    - Kullanım senaryosu diyagramları sistemin kabaca ne yaptığı ile ilgilenir, kesinlikle nasıl ve neden yapıldığını incelemez.
+    - Kullanım senaryosu  
+        - aktörler (sistem dışı aktörler –kullanıcılar veya diğer sistemler)
+        - senaryolar (kullanıcı tarafından başlatılan çeşitli olaylar dizisi)
+        - Aktör genellikle “insan” olarak düşünülmekle birlikte başka “sistem” ve “donanım” da olabilir.
+        - Aktör sistemi “uyarır” ,işlevleri haricen “tetikler”(aktif) yada sistemden “uyarıcı alır”(pasif).
+        - Aktör sistemin parçası değildir, “harici” dir.
+        - Aktörler belirlenir
+            - Her aktörün “ne” yapmak istediği belirlenir
+            - Her aktörün “ne” si için “ana senaryo özeti” çıkarılır
+            - Tüm sistemin ana senaryo özetleri incelenir, ayıklanır, birleştirilir
+            - Her senaryo için ana işlem adımları belirtilir.
+        ![kullanim-senaryo-diyagram](./img/kullanim-senaryo-diyagram.png)
+- **Ardışık diyagramlar**
+    - Sistem içindeki nesnelerin zaman içindeki ardışık aksiyonlarını gösterirler
+    - Sistemin dinamik bir resmini çizer
+    - Aktörün hayat süresi boyunca gerçekleştirdiği işlemler gösterilir.
+        - Aksiyonlar->dikdörtgen
+        - Etkileşimler->mesajlar
+    ![ardisik-diyagram](./img/ardisik-diyagram.png)
+- **İş birliği diyagramları**
+    - Parçaların bütünü nasıl oluşturduğunu ve sistemin dinamik davranışını göstermek amacıyla kullanılır.
+    - Nesneler arasındaki bağıntıları sıralı  mesajlar şeklinde gösterirler
+    - Ardışık diyagramlardan zaman kavramının olmayışı ile farklılık gösterirler.
+    ![isbiligi-diyagram](./img/isbirliği-diyagram.png)
+- **Durum diyagramları**
+    - Sistemdeki nesnelerin anlık durumlarını göstermek amacıyla kullanılırlar.
+    - Sistemin küçük alt sistemlere veya nesnelere ilişkin dinamik davranışlarının ortaya çıkartılması amacıyla yararlanılır
+    - Sistemin durumları ve bunların birbirlerini tetikleme ilişkileri belirtilir
+    ![durum-diyagram](./img/durum-diyagram.png)
+- **Etkinlik Diyagramları**
+    - Sistemdeki nesnelerin faaliyetlerini göstermek amacıyla kullanılırlar
+    - Durum diyagramlarının bir alt kümesi olarak değerlendirilen etkinlik diyagramları, iş akışlarının grafiksel gösteriminde kullanılırlar.
+    ![etkinlik-diyagram](./img/etkinlik-diyagramlari.png)
 # Veritabanı Tasarımı
 - **Tasarım yapılırken izlenecek adımlar**
     - **Gereksinimler**
@@ -74,6 +178,40 @@
                 - Oluşan tabloya çok değerli niteliği ve bağlı bulunduğu varlığın birincil anahtarını yabancıl anahtar olarak ekle
                 - Oluşan tablonun birincil anahtarı varlığın birincil anahtarı ve çok değerli niteliğin birleşiminden oluşmaktadır.
                 ![cok-degerli-niteliklerin-donusumu](./img/cok-degerli-niteliklerin-donusumu.png)
+# Mantıksal Model
+**varlıklar**
+![mantiksal-model-1](./img/mantiksal-model-1.png)
+![mantiksal-model-2](./img/mantiksal-model-2.png)
+**zayıf varlıklar**
+![mantiksal-model-3](./img/mantiksal-model-3.png)
+**alt sınıflar**
+![mantiksal-model-4](./img/mantiksal-model-4.png)
+**Birleşim**
+![mantiksal-model-5](./img/mantiksal-model-5.png)
+**birden falza değer alan nitelikler**
+![mantiksal-model-6](./img/mantiksal-model-6.png)
+**birleşik nitelik**
+![mantiksal-model-7](./img/mantiksal-model-7.png)
+**ikinci derece bağıntılar bire-bir**
+![mantiksal-model-7-1](./img/mantiksal-model7.png)
+**ikinci derece bağıntılar bire-çok**
+![mantiksal-model-8](./img/mantiksal-model-8.png)
+**ikinci derece bağıntılar çoğa-çok**
+![mantiksal-model-9](./img/mantiksal-model-9.png)
+**birinci derece bağıntılar bire-bir**
+![mantiksal-model-10](./img/mantiksal-model-10.png)
+**birinci derece bağıntılar bire-çok**
+![mantiksal-model-11](./img/mantiksal-model-11.png)
+**birinci derece bağıntılar çoğa-çok**
+![mantiksal-model-12](./img/mantiksal-model-12.png)
+**n'li bağıntılar**
+![mantiksal-model-13](./img/mantiksal-model-13.png)
+**örnek veritabanı mantıksal modeli**
+![mantiksal-model-14](./img/mantiksal-model-14.png)
+****
+![mantiksal-model-15](./img/mantiksal-model-15.png)
+
+
 
 # Normalizasyon
 **Normalizasyon;** veritabanı tasarım aşamasında veri tekrarını veri kaybını veya veri yetersizliğini önlemek için gerçekleştirilen işlemlerdir.
