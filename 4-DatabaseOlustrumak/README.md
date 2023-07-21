@@ -50,6 +50,10 @@ Oluşturulacak veritabanında şu dosyalar bulunabilir.
 
 **NOT :** Yeni oluşturulan veri tabanı model veri tabanının kopyası şeklindendir. Dolayısıyla tüm yeni veri tabanlarında olması gereken bir özellik varsa bu MODEL veri tabanı üzerinde yapılarak yeni oluşacak veri tabanlarına aktarılmış olur. 
 
+- MYSQL  ile veritabanı oluşturulduğunda mysql in kurulu olduğu diznde bulunan data dizini içerisine oluşturulan veritabanı isminde bir dizin oluşturulacaktır. daha sonraki aşamada oluşturulacak tablolar vu dizin içerisinde dopolanr.
+
+- ORACLE veritabvanları barındırdığı verileri tutmak için bir veya birden fazla fiziksel veridosyası içerebilir tablo görünüm ve indeks gibi yapılar fiziksel olarak veritanı için tahsis edilmiş veri dosyalarında saklanır. bir veri dosyası sadece bir veritabanı ile ilişkilendirilebilir veri dosyalarında boş yer kalmadığında otomatik olarak boyut artışı  sağlanabilir.veri dosyalarında ver inormal veritabanı işlemleri sırasında belleğe aktarılır değişikliğe uğramış yada yeni girilen verilerin hemen veri dosyalarına  gerek yoktur. çükü disk erişim sayısını  azaltmak ve performansı arttımak için verinin  bir kısmı bellekte tutulur ve gerektiğinde veri dosyalarına bir kerede yazılır. veri dosyasının uzantısı dbf dir her oracle veritabanında iki veya daha fazla redo log dosyası bulunur bu redo loglar kümesinde genel olarak veritabanının redo logu tutmaktır.bir sebepten dolayı bellekteki  veriler veri dosyalarına yazılamazsa değişiklikler redo loglardan elde edilebilir.yani yapılan iş hiçbir zaman kaybolmaz redo logları da içeren bir hatadurumu oluşması halinde redo bilgilerini kurtamak için oracle çoklu redo log tutulmasına izin verir.bunun anlamı bir redo logun aynı anda iki ya da  daha fazla kopyasının tutulmasıdır. redo log dosyasındaki bilgiler sadece sistem ya da medya hatası nedeniyle veri dosyalarına yazıamayan verileri kurtamak için kullanılır. redo log daki bilgiler kullanrak veri kurtaılmasına rolling forward denir redo log dosyalarının log u dur her oracle veritabanının bir kontroldosyası vardır.kontrol dosyasında veritabanının fiziksel yapısı ile ilgili bilgileri tutulur. veritabanı redo log dosyalarında olduğu gibi kontrol dosylarının da birden fazla kopyasının tutulmasını destekler kontrol dosylarında tutulan bilgilerin bazıları veritabanının adı redo log örneğinin her açılışında kontrol  dosyası veritabanı ve redo dosylarının yerlerinin yapısında bir değişiklik olursa kontrol dosyası oracle tarafnda otomatik olarak değiştirilir.kontrol dosyası veritabanının kurtaılmasıda da kullanılır kontrol dosylarının uzantısı ctl dir.  
+
 ## Database oluşturma
 - SQL (structured Query Language) dili ile komutlar ile yapılabildiği gibi Vizard (sihribaz) kullanılarak da yapılabilir.
 
@@ -138,6 +142,10 @@ SIZE= 6 MB, MAXSIZE=20 MB, FILEGROWTH=2 MB
 )
 ```
 Eğer birden fazla fiziksel disk varsa performansı yükseltmek amacıyla oluşturulan ikincil veri dosyaları (Secondery Data File) için dosya grupları oluşturulabilir.Direkt olarak veri tabanı oluştururken, dosya grupları oluşturulabileceği gibi daha sonrada oluşturulabilir.
+
+**FOR LOAD:** hazırlanan veritavanının ms sql serverin daha önceki versiyonlarında uyum sağlaması için kullanılır.
+
+**FOR ATTACH:** daha hazırlanmış veya hazır olarak alınmış veritabanları mevcut VTYS üzerinde oluşturulamadığı için görünmeyecektir.Bu şekilde var olan ama VTYS üzerinde görünmeyen veritanlarının sisteme dahil edilmesi için kullanılır.
 
 ## Lisans
 - **Per Processor Licensing (İşlemci Başına Lisans) :** SQL sunucu kullanıldığı her işlemci için alınan lisans şeklidir. Bu tür lisanslama alındığında bağlanan kullanıcı sayısının önemi yoktur. Özellikle web ortamında ve büyük veri tabanlarında kullanılan SQL sunucu için oldukça idealdir.

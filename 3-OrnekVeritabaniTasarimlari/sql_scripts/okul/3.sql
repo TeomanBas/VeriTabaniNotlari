@@ -1,0 +1,13 @@
+-- DROP İFADESİ BİR TABLOYU YADA DATABASES LERİ KALDIRMAK SİLMEK İÇİN KULLANILIR.alter
+-- ÖRNEK KULLANIM ŞEKLİ;
+		 -- DROP DATABASE veritabanı_adi;
+ 		 -- DROP TABLE tablo_adi;
+-- DROP ifadesi tek başına kullaılırsa tüm veri tabanı yada tabloyu ortadan kaldırır.Eğer alter içerisinde kullanılırsa belirtilen 
+-- veritabanı nesnelerinin özelliklerini kaldırır.
+
+-- DELETE İFADESİ İLE TABLODAKİ KAYITLAR SİLİNEBİLİR ANCAK KAYITLAR OTOMATİK ARTIRMALI İSE TABLOYA EKLENEN YENİ KAYITLAR 
+-- SİLİNEN SON KAYIDIN NUMARASININ KALDIĞI YERDEN DEVAM EDECEKTİR.ÖRNEĞİN SİLİNEN SON KAYIT NO SU 100 İSE YENİ EKLENEN KAYITLARIN İLK NO SU
+-- 101 OLACAKTIR. İŞTE BUNUN OLMAMASI İÇİN TRUNCATE KULLANILIR.
+-- ÖRNEK KULLANIMI;
+		-- TRUNCATE TABLE tablo_adi; 
+		-- TRUNCATE TABLE  ogrenci; ogrenci tablosundaki tüm kayıtlar siinecektir.
