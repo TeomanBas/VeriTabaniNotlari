@@ -14,6 +14,44 @@ GO
 ```
 burada yapılan öncelikle tablonun var olup olmadığının kontrolüdür burada **sysobjects** tablosunda **xtype** ve **name** koşuluna uyan bir satır olup olmadığı kontrol ediliyor.
 
+```sql
+SELECT .....    --
+.....           -- BATCH
+.....           --
+UPDATE .....    --
+GO
+SELECT .....    --
+.....           -- BATCH
+.....           --
+DELETE .....    --
+GO
+```
+**GO**  deyimi BATCH içinde bir yazım hatası olduğunda batch çalışmaz hale gelir ve aynı batch içinde bir tablonun yapısı değiştirilip kullanılamaz.
+
+**ÖRNEK**
+```sql
+CREATE DATABASE db_deneme
+----
+USE db_deneme
+CREATE TABLE tbl_deneme3(asd NVARCHAR(50),def INT
+IDENTITY(1,1) PRIMARY KEY,ghi NVARCHAR(50))
+```
+```sql
+CREATE TABLE urun .........
+INSERT urun ..........
+GO
+```
+bu kodlar çalışmaz çünkü aynı batch içinde tablo değiştiriliyor ve veri girişi yapılmaya çalışılıyor.
+
+```sql
+CREATE TABLE urun .........
+GO
+INSERT urun ..........
+GO
+-- Buradaki kod ise hata vermeden çalışır.
+```
+
+
 - **sysobjects:** oluşturulan her nesne tablo,veritabanı,transaction vb herşey için veriler içeren bir tablodur. Sysobjects tablosu, SQL Server 2000 sistem tablosu olarak kullanılmıştır. Ancak, bu tablo geriye dönük uyumluluk için bir görünüm olarak dahil edilmiştir. Bu özellik gelecekteki bir sürümde kaldırılacağı için, bu tablo yerine sys.objects katalog görünümünü kullanılmalıdır.. Sys.objects katalog görünümü, sysobjects tablosuna benzer şekilde veritabanındaki nesnelerin bilgilerini içerir. Ancak, sys.objects katalog görünümünde type sütunu yerine type_desc sütunu kullanılır. Type_desc sütunu, nesne türünü açıklayan bir metindir. Örneğin, type_desc sütununun alabileceği değerler ve anlamları şöyle sıralanabilir:
 
     - AGGREGATE_FUNCTION
@@ -221,3 +259,9 @@ DECLARE @haftayasimdi DATETIME SET @haftayasimdi=DATEADD(DAY,7,@simdi);
 SELECT @haftayasimdi;
 ```
 `@simdi` değişkeni üzerinden yeni bir tarih belirledik ve `@haftayasimdi` değişkenine atadık.
+
+```sql
+PRINT 'merhaba dünya'
+PRINT @@error -- sql deyimi hata vermeden çalışırsa 0 eğer hata verirse değeri sıfırdan farklı bir değer olur
+PRINT @@rowcount -- update, delete yada herhanbi insert deyimi çalıştığında haç tane kaydın eklendiğinin sayısını tutar.
+```
