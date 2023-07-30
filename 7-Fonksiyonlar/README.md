@@ -147,3 +147,52 @@ Belirlenen sütundaki sayının modunu almak için kullanılır mod işlemi dest
 ```sql
 x % Y veya MOD(x,y)
 ```
+### CURRENT_TIMESTAMP
+Güncel zaman bilgisini alır.
+```sql
+SELECT CURRENT_TIMESTAMP; 
+```
+Sistemin zaman bilgisi aşağıdaki şekilde alınabilir.
+**MS SQL**
+```sql
+SELECT GETDATE(); -- 2010-09-23 12:22:33.432
+```
+**ORACLE**
+```sql
+SELECT SYSTIMESTAMP FROM DUAL; -- 18-MAR-10 09.12.55.644400 ös +02:00
+SELECT SYSDATE FROM DUAL; --17/03/2010
+SELECT CURRENT_DATE FROM DUAL; --17/03/2010
+```
+**MYSQL**
+```sql
+SELECT CURDATE() --2011-03-17
+SELECT CURTIME() --23:27:42
+```
+### DATEPART
+Ms sql detaylı zaman bilgisi almak için kullanılır.
+
+![datepart-1](./img/time-1.png)
+```sql
+SELECT DATEPART(YEAR,GETDATE());    -- 2010
+SELECT DATEPART(YEAR,'2010-05-18'); -- 2010
+
+```
+### EXTRACT
+MYsql ve Oracle veritabanlarında detaylı zaman bilgisi almak için kullanılır.
+**ORACLE**
+```sql
+SELECT EXTRACT (YEAR FROM SYSDATE) FROM DUAL -- 2010
+SELECT EXTRACT (HOUR FROM CURRENT_TIMESTAMP) FROM DUAL -- 18
+SELECT EXTRACT (DAY FROM DATE '2010-04-16') FROM DUAL 
+```
+
+### MS SQL SERVER VERİ TİPİ DÖNÜŞÜMÜ
+Ms sql server veritabanı sistemlerinde veri tipini değiştirmek için convert() ve cast() fonksiyonları kullanılır.Convert() fonksiyon tip dönüşümü yaparken veriyi biçimlendirme işlemi de yapar.
+```
+CAST(değer AS veri_tipi)
+```
+
+```sql
+SELECT CAST('Metin' AS char(3)) -- Met
+SELECT CAST(5.5976 AS INT) -- 5
+```
