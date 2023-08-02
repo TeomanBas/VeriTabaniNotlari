@@ -7,6 +7,7 @@ USE okul;
  ALTER TABLE ogrenciler ADD CONSTRAINT  uc_ogrno  UNIQUE(ogr_no,ad); -- ogranciler tablosunda uc_de adında bir zorlayıcı ifade oluşturuldu ve belirtilen sütunların değer alırken unique değer alması şartı koşuldu. 
  ALTER TABLE ogrenciler ADD FOREIGN KEY (ogr_bolum_no) REFERENCES bolumler(bolum_id); -- yabancıl anahtar tanımlaması yapıldı. 
  ALTER TABLE ogrenciler DROP INDEX uc_ogrno; -- ogrenciler tablosunda tanımlanmış olan uc_ogrno adındadaki index silinmiştir.
-
+ -- ogrenciler talbosundaki ogr_adres  sütunu ismi değiştildi.
+ ALTER TABLE `ogrenciler` CHANGE `ogr_adres` `ogr_mail_adres` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;
 SELECT * FROM ogrenciler;
 
