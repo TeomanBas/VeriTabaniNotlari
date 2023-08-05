@@ -41,6 +41,44 @@ ortak_sütun(=,>,< >=,<=,<>)tablo2.ortak_sutun
 ```
 
 ### CROSS JOIN (KARTEZYEN ÇARPIM)
+**CROS JOIN** birleştirilen tablolardaki tüm satırların listelenmesini sağlar.Sorgu sonucu iki tablonun sayısının çarğımı kadar satırdan oluşmaktadır.
+```sql
+SELECT tablo1.sutun_adi,tablo2.sutun_adi ...
+FROM tablo1 CROSS JOIN tablo2
+```
+
 ### NATURAL JOIN (DOĞAL BİRLEŞTİRME)
+**NATURAL JOIN** elde ettiği sonuç kümesi olarak INNER JOIN türü birleştirmeye benzer ancak koşul ifadesi belirtmeye gerek yoktur. Ortak sütunlar otomatik olarak birleştirilir tek bir sütun halinde gözükür.Diğer birleştirmelerde olan satır tekrarları **NATURAL JOIN** birleşimlerinde oluşmayacaktır.
+```sql
+SELECT tablo1.sutun_adi,tablo2.sutun_adi ...
+FROM tablo1 NATURAL JOIN tablo2
+```
+
 ### SELF JOIN (TABLONUN KENDİSİYLE BİRLEŞTİRİLMESİ)
+**SELF JOIN** işlemi aslında diğer join işlemlerinin ve tabloları isimlendirme işleminin ortak kullanımıdır.
+![self-join](./img/self-join.png)
 ## ORTAK SÜTUNU BULUNMAYAN TABLOLARIN BİRLEŞTİRİLMESİ
+Ortak sütunu bulunan tabloların birleştirilmesi için where veya join ifadeleriyle birleştirme yapılabilir.Ortak sütunu yok ise tabloların birleştirilmesi Aritmetik operatörler yerine **BETWEEN** ifadesi veya **<= AND >=** ifadesi kullanılabilir. 
+![ortak-sutun-olmayan-tablolar](./img/ortak-sutun-olmayan-tablolar.png)
+
+## TABLOLARI KÜMELEME İFADELERİ İLE BİRLEŞTİRME
+### İKİ SORGUNUN KESİŞİMİ(INTERSECT)
+**INTERSECT** ifadesi aynı sütunlara sahip iki tablonun keşisimi bulmak için kullanılır.
+```sql
+SELECT * FROM tablo1 INTERSECT SELECT * FROM tablo2
+```
+![intersect](./img/intersect.png)
+### İKİ SORGUNUNUN FARKI
+İki farklı sorgudan dönen aynı isimdeki sütunların farkını almak için kullanılır.İki kümenin birbirlerinden farkının toplamıdır.
+```sql
+SELECT * FROM tablo1 EXCEPT SELECT * FROM tablo2
+```
+
+### İKİ SORGUNUN BİRLEŞİMİ(UNION , UNION ALL)
+**UNION** Kümelerdeki birleşim işlemi ile aynıdır.**UNION ALL** farkı her iki tablodada aynı satırlar varsa bunlar da sonuç olarak gösterilir ancak UNION işleminde her iki tabloda bulunan aynı satırlar sadece bir kez gösterilir.
+```sql
+SELECT sutun_adi FROM tablo1 UNION SELECT sutun_adi FROM tablo;
+```
+```sql
+SELECT sutun_adi FROM tablo1 UNION ALL SELECT sutun_adi FROM tablo;
+```
