@@ -23,7 +23,13 @@ Sorgudan dönen değerlerin birden fazla olduğu durumlarda koşul ifadesi böl�
 ![sub-query-2-2](./img/sub-query-2-2.png)
 
 ## ALT SORGULARDA GROUP BY ve HAVING kULLANIMI
+**ANY** temel sorguda belirtilen koşul ifadei için alt sorgudan dönen herhangi bir grup verinin birini sağlayan durumlar için kullnılır.Personel tablosunda teknikerlerden daha maaş alan mühendislerin bilgilerini getiren sql sorguları.
+![sub-query-any](./img/sub-query-any.png)
+
+**ALL** temel sorguda belirtilen koşul ifadesi için alt sorgudan dönen bir grup verinin tamamını sağlayan durumlar için kullanılır.
+
 ## ALT SORGULARDA ANY VE ALL KULLANIMI
+
 ## ALT SORGULARDA EXISTS VE NOT EXISTS KULLANIMI
 ## SÜTUN İSİMLERİNDE ALT SORGU KULLANIMI
 ## FROM İFADESİNDE ALT SORGU KULLANIMI
