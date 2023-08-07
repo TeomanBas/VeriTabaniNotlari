@@ -23,13 +23,41 @@ Sorgudan dönen değerlerin birden fazla olduğu durumlarda koşul ifadesi böl�
 ![sub-query-2-2](./img/sub-query-2-2.png)
 
 ## ALT SORGULARDA GROUP BY ve HAVING kULLANIMI
+Temel sorguların koşul değerlerini oluşturan alt sorgularda koşullu gruplandırma işlemleri yapılabilir.
+```sql
+SELECT * FROM kitaplar WHERE fiyat>(
+    SELECT MIN(fiyat) FROM kitaplar
+    GROUP BY konu HAVING konu='BİLGİSAYAR'
+)
+```
+
+## ALT SORGULARDA ANY VE ALL KULLANIMI
 **ANY** temel sorguda belirtilen koşul ifadei için alt sorgudan dönen herhangi bir grup verinin birini sağlayan durumlar için kullnılır.Personel tablosunda teknikerlerden daha maaş alan mühendislerin bilgilerini getiren sql sorguları.
 ![sub-query-any](./img/sub-query-any.png)
 
 **ALL** temel sorguda belirtilen koşul ifadesi için alt sorgudan dönen bir grup verinin tamamını sağlayan durumlar için kullanılır.
 
-## ALT SORGULARDA ANY VE ALL KULLANIMI
-
 ## ALT SORGULARDA EXISTS VE NOT EXISTS KULLANIMI
+**EXISTS** alt sorgudan dönen değerin olul olmadğını kontrol etmek için kullanılır.EXIST ifadesi temel sorgunun koşul kısmını oluşturmaktadır.Alt sorgu sonucunda eğer 1 satır dönerse temel sorgunun koşul kısmı TRUE değerini alacağı için temel sorgu işlevini gerçekleştirir.Eğer bir satır dahi dönmesse false değerini alır ve temel sorgu koşulu sağlanmamış olur. **NOT EXISTS** bunun tam tersidir.
+
+Alt SORGULAR oluşturulurken tek bir sütun dönmesi gerekiyordu ancak EXIST kullanımların böyle kısıt yoktur.
+```sql
+SELECT * FROM satici
+WHERE EXISTS (
+    SELECT * FROM satis
+    WHERE satici_n=satici AND parca_n=27
+)
+```
+
+**örnek**
+satış tablosundaki bir aracın kontrol edilmesi
+![satis_tablosu](./img/satis_tablo-1.png)
+![exists-1](./img/exists-query_sonucu-1.png)
+![exists-1](./img/exists-query_sonucu-2.png)
+
 ## SÜTUN İSİMLERİNDE ALT SORGU KULLANIMI
+Alt sorgular koşul ifadelerinin dışındada kullanılabilir.
+![sub_query-3](./img/sub_query-3.png)
 ## FROM İFADESİNDE ALT SORGU KULLANIMI
+Alt sorgudan üretilen değerler from ifadesi için tablo kaynağı olarakta kullanılabilir.
+![sub-query-from](./img/sub-query-from.png)
