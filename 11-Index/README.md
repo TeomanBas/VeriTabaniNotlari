@@ -76,6 +76,39 @@ CREATE UNIQUE INDEX indeks_adı ON tablo_adi(sütun_adı)
 CREATE INDEX indeks_adi ON tablo_adi(sutun_adı_1 ASC,sutun_adi_2 DESC)
 ```
 
+
+## FULLTEXT INDEX
+Sadece MYISAM tablolarında geçerlidir.MYSQL depolama motoru kullanır bu nedenle fulltext indeks oluşturulduğunda hata verir.Bunun için tablonun depolama motoru tercihi değiştirilebilir.
+```sql
+ALTER TABLE film_text2 ENGINE = MYISAM
+```
+### TABLO OLUŞTURURKEN FULLTEXT INDEX OLUŞTURMAK
+```sql
+CREATE TABLE `film_text2` (
+`film_id` smallint(6) NOT NULL,
+`title` varchar(255) NOT NULL,
+`description` text,
+PRIMARY KEY (`film_id`),
+FULLTEXT KEY `idx_title_description` (`title`,`description`)
+)ENGINE = MYISAM
+```
+
+## INDEX SIRASI
+Btree indeksler sadece artan sırada sıralanır. Mysql veritabanı indeksleri sadece artan sırada depolar. Aksi belirtildiğinde hata vermez ama aslında bunu gerçekleştirmez.
+```sql
+Alter table customer ADD index(first_name DESC)
+```
+DESC iadesini MYSQL göz ardı eder.
+
+## INDEX UZUNLUĞU
+Metin türündeki indekslerde indeks değerinin uzunluğunu belirtebilirsiniz. Maksimum indeks metin uzunluğu 45 karakter olabilir. 182 byte olabilir.
+
+```sql
+CREATE INDEX idx_partial ON customer (name(10));
+```
+
+
+
 ## INDEKS SİLMEK
 
 **mssql**
